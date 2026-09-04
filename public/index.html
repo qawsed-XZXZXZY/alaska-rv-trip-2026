@@ -239,6 +239,7 @@
         <article class="tip"><h3>昼夜与极光</h3><p>网页按 Anchorage 当地时间自动切换配色。看极光先查看云量与 Kp；不要为了追光疲劳驾驶。</p></article>
         <article class="tip"><h3>衣物</h3><p>冰川活动穿排汗层、保暖层和防水外层，带手套、帽子、墨镜与闭趾鞋；运营方提供干式服与冰爪。</p></article>
         <article class="tip"><h3>燃油与水箱</h3><p>长途当天半箱油就开始找加油站。还车前加满油、排灰黑水并预留清洁时间，目标 10:45 抵达还车点。</p></article>
+        <article class="tip"><h3>三次采购怎么分</h3><p>9月11日晚 Walmart 买水、早餐和大件；12日早 New Sagaya 只补亚洲调料与鲜食；13日离开 Palmer 时用 Fred Meyer 查漏补缺。公开营业时间临时可能调整，出发前再点地图确认。</p></article>
         <article class="tip"><h3>开放日核对</h3><p>Morris Thompson 9 月每日 08:00–17:00且免费；Chena 冰雕博物馆全年开放但要选场次；Anchorage Museum 9 月每日 10:00–18:00。</p></article>
         <article class="tip"><h3>离线使用</h3><p>页面本身可离线打开；Google 地图导航仍需要网络。出发前在 Google Maps 下载 Anchorage、Parks Highway、Fairbanks 离线地图。</p></article>
         <article class="tip"><h3>紧急与通信</h3><p>野外路段信号可能中断。每天出发前把油量、天气、轮胎和目的地地址截图保存；紧急情况拨 911。</p></article>
@@ -282,26 +283,28 @@
       </article>`).join('');
 
     const days = [
-      { date:'9月11日 · 周五', title:'飞抵安克雷奇', sleep:'宿：租车公司场地内房车', color:'#d95e4b', stops:['Mexico City International Airport Terminal 1','Dallas Fort Worth International Airport','Ted Stevens Anchorage International Airport','Great Alaskan Holidays'], events:[
+      { date:'9月11日 · 周五', title:'飞抵安克雷奇 · 主采购', sleep:'宿：租车公司场地内房车', color:'#d95e4b', stops:['Mexico City International Airport Terminal 1','Dallas Fort Worth International Airport','Ted Stevens Anchorage International Airport','Walmart Supercenter 8900 Old Seward Hwy Anchorage','Great Alaskan Holidays'], events:[
         ['07:00','CST · UTC−6','AA1374 起飞','墨西哥城 T1 → 达拉斯；11:01 CDT 抵达。'],
         ['15:15','CDT · UTC−5','AA399 起飞','达拉斯 → 安克雷奇；19:13 AKDT 抵达。'],
-        ['约20:15','AKDT · UTC−8',`前往 ${place('Great Alaskan Holidays','9800 Old Seward Hwy, Anchorage, AK 99515')}`,'自行打车或网约车；找到邮件注明的车辆和钥匙，当晚只住宿，不开车。']
-      ], risk:'必须提前收到夜间进场和钥匙位置邮件；如果出发前仍未收到，立即联系租车公司。'},
-      { date:'9月12日 · 周六', title:'取车 · 帕尔默冰川', sleep:'宿：Palmer / Anchorage North KOA（已确认）', color:'#dd5b48', stops:['Great Alaskan Holidays','Carrs Abbott Road Anchorage','Outbound Heli Adventures','Palmer / Anchorage North KOA Journey'], events:[
+        ['约20:05–21:05','AKDT · UTC−8',`${place('Walmart 主采购','8900 Old Seward Hwy, Anchorage, AK 99515')}`,'机场打车约14分钟；每天06:00–23:00。先买饮用水、早餐、路餐及体积大的房车用品，行李全程随身。若20:45仍未离开机场，只买必需品。'],
+        ['约21:10','AKDT · UTC−8',`前往 ${place('Great Alaskan Holidays','9800 Old Seward Hwy, Anchorage, AK 99515')}`,'Walmart 到租车公司约0.7英里、驾车约2分钟；找到邮件注明的车辆和钥匙，当晚只住宿，不开车。']
+      ], risk:'必须提前收到夜间进场和钥匙位置邮件；如果出发前仍未收到，立即联系租车公司。若航班延误或两人已经很疲劳，11日晚只买水和早餐，安全优先。'},
+      { date:'9月12日 · 周六', title:'取车 · 亚洲食材补购 · 帕尔默冰川', sleep:'宿：Palmer / Anchorage North KOA（已确认）', color:'#dd5b48', stops:['Great Alaskan Holidays','New Sagaya Midtown Market Anchorage','Outbound Heli Adventures','Palmer / Anchorage North KOA Journey'], events:[
         ['07:15','AKDT · UTC−8','房车讲解与取车','讲解约45分钟，完成文件后才能驾驶。'],
-        ['08:30','AKDT · UTC−8','采购食品和房车用品','控制在60分钟内；第一次驾驶留足适应时间。'],
-        ['10:00','AKDT · UTC−8',`驶往 ${place('Palmer','Palmer, Alaska')}`,'预计约1小时；最迟11:30抵达集合点。'],
+        ['约08:15–09:00','AKDT · UTC−8',`${place('New Sagaya Midtown 补购','3700 Old Seward Hwy, Anchorage, AK 99503')}`,'从租车公司约9分钟；公开营业时间07:00–21:00。只买亚洲调料、蔬菜和鲜食，控制在30–40分钟。'],
+        ['最晚09:15','AKDT · UTC−8',`离店驶往 ${place('Outbound Heli','3901 S Lindsey Cir F, Palmer, AK 99645')}`,'从 New Sagaya 约56分钟；首次驾驶房车按75分钟预留，目标10:30前到 Palmer，绝不晚于11:30集合。'],
         ['12:00','AKDT · UTC−8',`${place('Outbound Heli','3901 S Lindsey Cir F, Palmer, AK 99645')} · 冰川桨板 + Glacier Trekking`,'订单为6小时；闭趾鞋、分层防水衣物。', '需确认/尾款'],
         ['18:00–19:00','AKDT · UTC−8','返场缓冲并前往营地','19:00不是订单结束时间，而是为天气、直升机调度和换装预留。'],
         ['约19:15–20:00','AKDT · UTC−8',`${place('Palmer KOA 晚到入住','2010 S Church St, Palmer, AK 99645')}`,'营地已记录预计19:00–21:00抵达；到场查看夜间登记箱。营位有30A电源和水，无下水接口。']
-      ], risk:'住宿已确认，晚到时间也已写入订单；若办公室关闭，按夜间登记箱资料入位。不要再向南折返 Anchorage。'},
-      { date:'9月13日 · 周日', title:'Talkeetna · 抵达 Denali', sleep:'宿：Riley Creek Campground', color:'#e6a62d', stops:['Palmer / Anchorage North KOA Journey','Talkeetna Alaska','Riley Creek Mercantile'], events:[
-        ['08:30','AKDT · UTC−8','离开 Palmer','先检查油量和饮水。'],
-        ['10:15','AKDT · UTC−8',`${place('Talkeetna 小镇','Talkeetna, Alaska')}`,'午餐、主街散步；不临时加入长时飞行项目。'],
+      ], risk:'09:15是采购硬截止：如果房车交接到08:45仍未完成，直接取消 New Sagaya，驶往 Palmer。不要为了购物压缩冰川活动的报到缓冲。'},
+      { date:'9月13日 · 周日', title:'Palmer 补给 · Talkeetna · 抵达 Denali', sleep:'宿：Riley Creek Campground', color:'#e6a62d', stops:['Palmer / Anchorage North KOA Journey','Fred Meyer Palmer','Talkeetna Alaska','Riley Creek Mercantile'], events:[
+        ['08:30','AKDT · UTC−8','离开 Palmer KOA','先检查油量和饮水。'],
+        ['约08:40–09:20','AKDT · UTC−8',`${place('Fred Meyer 查漏补缺','535 E Palmer-Wasilla Hwy, Palmer, AK 99645')}`,'中大型综合超市，每天06:00–22:00；适合买生鲜、饮料和遗漏用品。备选 Carrs：664 E Palmer-Wasilla Hwy，每天05:00–24:00。'],
+        ['约11:00','AKDT · UTC−8',`${place('Talkeetna 小镇','Talkeetna, Alaska')}`,'经 Fred Meyer 的总驾驶约1小时47分，比营地直达多约21分钟；午餐、主街散步，不临时加入长时飞行项目。'],
         ['13:15','AKDT · UTC−8','驶往 Denali','房车预计约3小时，途中安排一次休息。'],
         ['16:30','AKDT · UTC−8',`${place('Riley Creek 办理入住','Riley Creek Mercantile, Denali National Park')}`,'先到 Mercantile 核验营位，再进入营地。'],
         ['18:00','AKDT · UTC−8',`${place('Horseshoe Lake 轻松散步','Horseshoe Lake Trailhead, Denali National Park')}`,'按体力选择短线。']
-      ], risk:'营位为先到先选；不要先直接占位，必须先去 Riley Creek Mercantile 办理入住。'},
+      ], risk:'13日采购建议40分钟封顶，13:15仍按原计划离开 Talkeetna。营位为先到先选；不要先直接占位，必须先去 Riley Creek Mercantile 办理入住。'},
       { date:'9月14日 · 周一', title:'East Fork 巴士 · Savage Alpine', sleep:'宿：Riley Creek Campground', color:'#ef8460', stops:['Riley Creek Campground','Denali Bus Depot','East Fork Bridge Denali','Savage River Rest Area Denali','Mountain Vista Denali'], events:[
         ['09:20','AKDT · UTC−8',`前往 ${place('Denali Bus Depot','Denali Bus Depot, Denali National Park')}`,'预订要求至少提前20分钟到。'],
         ['10:00–12:30','AKDT · UTC−8','East Fork Transit · 去程','已确认；12:30左右在 East Fork 调头。带足全天食物、水和保暖层。'],
