@@ -223,7 +223,6 @@
         <ul class="plain-list">
           <li><b>确认 After Hours 到达邮件</b><span>请租车公司确认已记录 AA399 19:13 抵达，并重发房车位置、钥匙与夜间进场说明。</span></li>
           <li><b>支付冰川活动尾款</b><span>订单现有尾款未付；同时确认活动正式结束时间是 18:00，19:00 仅作为天气和返场缓冲。</span></li>
-          <li><b>预订 9 月 12 日 <a href="https://koa.com/campgrounds/palmer/general-information/" target="_blank" rel="noreferrer">Palmer KOA</a></b><span>按 25 ft、2 人、1 辆房车预订，并备注可能晚到；官网明确有夜间登记箱。</span></li>
           <li><b>提交 9 月 17 日 <a href="https://www.alaskatraveladventures.com/rv-park/reservation-request-anchorage" target="_blank" rel="noreferrer">Ship Creek 预订申请</a></b><span>提交不等于确认。收到营位确认后，再电话核对晚到和车辆尺寸。</span></li>
           <li><b>预订 9 月 16 日 <a href="https://www.chenahotsprings.com/?p=1891" target="_blank" rel="noreferrer">Aurora Ice Museum</a></b><span>全年开放但需要选择场次；提前 15 分钟到 Activities Center。</span></li>
           <li><b>确认 9 月 18 日行李寄存</b><span>首选 ANC 机场 Huntleigh USA（行李提取 4 旁，907-248-0373）；先电话确认当天营业时间。若不可用，询问租车公司能否临时保管。</span></li>
@@ -264,6 +263,7 @@
       { title:'AA399 · 达拉斯 → 安克雷奇', time:'9月11日 15:15 CDT → 19:13 AKDT', detail:'DFW → ANC South Terminal · 美国航空', address:'Ted Stevens Anchorage International Airport', phone:'+1 907-245-0503' },
       { title:'Great Alaskan Holidays 房车', time:'9月11日夜间入住 · 9月12日 07:15 讲解', detail:'9月18日 11:30前还车 · Winnebago Minnie Winnie 22M', address:'9800 Old Seward Hwy, Anchorage, AK 99515', phone:'+1 907-248-7777' },
       { title:'Outbound Heli 冰川徒步组合', time:'9月12日 12:00–18:00 AKDT', detail:'2人 · Paddleboarding + Glacier Trekking · 尾款待付', address:'3901 S Lindsey Cir F, Palmer, AK 99645', phone:'+1 907-351-6736' },
+      { title:'Palmer / Anchorage North KOA', time:'9月12日 14:00后入住 · 9月13日 11:00退营', detail:'1晚 · Pull Thru · 30A电源＋供水 · 无营位下水 · 25 ft房车 · 2人', address:'2010 S Church St, Palmer, AK 99645', phone:'+1 907-745-7445' },
       { title:'Riley Creek Campground', time:'9月13日入住 · 9月15日 11:00退营', detail:'2晚 · 30 ft以下房车营位 · 2人', address:'Riley Creek Campground, Denali National Park, AK', phone:'+1 866-761-6629' },
       { title:'East Fork Transit', time:'9月14日 10:00–14:45 AKDT', detail:'2人 · 09:40前到 Denali Bus Depot', address:'Denali Bus Depot, Denali National Park, AK', phone:'+1 866-761-6629' },
       { title:'Fairbanks / Chena River KOA', time:'9月15日入住 · 9月16日退营', detail:'Pull-through · Full hookups · 25 ft房车 · 2人', address:'1368 Old Badger Rd, North Pole, AK 99705', phone:'+1 907-802-2408' },
@@ -287,13 +287,14 @@
         ['15:15','CDT · UTC−5','AA399 起飞','达拉斯 → 安克雷奇；19:13 AKDT 抵达。'],
         ['约20:15','AKDT · UTC−8',`前往 ${place('Great Alaskan Holidays','9800 Old Seward Hwy, Anchorage, AK 99515')}`,'自行打车或网约车；找到邮件注明的车辆和钥匙，当晚只住宿，不开车。']
       ], risk:'必须提前收到夜间进场和钥匙位置邮件；如果出发前仍未收到，立即联系租车公司。'},
-      { date:'9月12日 · 周六', title:'取车 · 帕尔默冰川', sleep:'宿：Palmer KOA（待订）', color:'#dd5b48', stops:['Great Alaskan Holidays','Carrs Abbott Road Anchorage','Outbound Heli Adventures','Palmer / Anchorage North KOA Journey'], events:[
+      { date:'9月12日 · 周六', title:'取车 · 帕尔默冰川', sleep:'宿：Palmer / Anchorage North KOA（已确认）', color:'#dd5b48', stops:['Great Alaskan Holidays','Carrs Abbott Road Anchorage','Outbound Heli Adventures','Palmer / Anchorage North KOA Journey'], events:[
         ['07:15','AKDT · UTC−8','房车讲解与取车','讲解约45分钟，完成文件后才能驾驶。'],
         ['08:30','AKDT · UTC−8','采购食品和房车用品','控制在60分钟内；第一次驾驶留足适应时间。'],
         ['10:00','AKDT · UTC−8',`驶往 ${place('Palmer','Palmer, Alaska')}`,'预计约1小时；最迟11:30抵达集合点。'],
         ['12:00','AKDT · UTC−8',`${place('Outbound Heli','3901 S Lindsey Cir F, Palmer, AK 99645')} · 冰川桨板 + Glacier Trekking`,'订单为6小时；闭趾鞋、分层防水衣物。', '需确认/尾款'],
-        ['18:00–19:00','AKDT · UTC−8','返场缓冲并前往营地','19:00不是订单结束时间，而是为天气、直升机调度和换装预留。']
-      ], risk:'不要活动结束后再向南开回 Anchorage；住 Palmer 可减少夜间驾驶，也避免第二天折返。'},
+        ['18:00–19:00','AKDT · UTC−8','返场缓冲并前往营地','19:00不是订单结束时间，而是为天气、直升机调度和换装预留。'],
+        ['约19:15–20:00','AKDT · UTC−8',`${place('Palmer KOA 晚到入住','2010 S Church St, Palmer, AK 99645')}`,'营地已记录预计19:00–21:00抵达；到场查看夜间登记箱。营位有30A电源和水，无下水接口。']
+      ], risk:'住宿已确认，晚到时间也已写入订单；若办公室关闭，按夜间登记箱资料入位。不要再向南折返 Anchorage。'},
       { date:'9月13日 · 周日', title:'Talkeetna · 抵达 Denali', sleep:'宿：Riley Creek Campground', color:'#e6a62d', stops:['Palmer / Anchorage North KOA Journey','Talkeetna Alaska','Riley Creek Mercantile'], events:[
         ['08:30','AKDT · UTC−8','离开 Palmer','先检查油量和饮水。'],
         ['10:15','AKDT · UTC−8',`${place('Talkeetna 小镇','Talkeetna, Alaska')}`,'午餐、主街散步；不临时加入长时飞行项目。'],
