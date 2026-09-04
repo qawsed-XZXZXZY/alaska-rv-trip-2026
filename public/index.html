@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0d5b54">
+  <meta name="description" content="2026 年 9 月，两个人的阿拉斯加房车旅行手册。">
+  <title>阿拉斯加 · 9日房车旅行手册</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #edf6f3;
+      --paper: #fffef9;
+      --paper-2: #f6fbf8;
+      --ink: #18332f;
+      --muted: #61756f;
+      --line: #bfd7cf;
+      --brand: #0d6c62;
+      --brand-2: #169b8e;
+      --sky: #2f80b5;
+      --gold: #f0b54a;
+      --warning: #a9482a;
+      --shadow: 0 16px 44px rgba(19, 66, 59, .11);
+      --radius: 22px;
+    }
+    html[data-theme="night"] {
+      color-scheme: dark;
+      --bg: #071b24;
+      --paper: #0d2932;
+      --paper-2: #11343d;
+      --ink: #eefbf6;
+      --muted: #a9c7c0;
+      --line: #27505a;
+      --brand: #58d4bd;
+      --brand-2: #74e7ce;
+      --sky: #75bfea;
+      --gold: #ffd174;
+      --warning: #ff9d79;
+      --shadow: 0 18px 52px rgba(0, 0, 0, .28);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 300px;
+      background:
+        radial-gradient(circle at 8% -10%, color-mix(in srgb, var(--brand-2) 20%, transparent), transparent 34rem),
+        linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 86%, #b9d9dc));
+      color: var(--ink);
+      font-family: ui-rounded, "SF Pro Rounded", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    button, summary { font: inherit; }
+    .shell { width: min(1080px, calc(100% - 28px)); margin: 0 auto; padding: 18px 0 80px; }
+    .topline { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 2px 2px 14px; }
+    .trip-title { font-size: clamp(1.05rem, 4vw, 1.3rem); font-weight: 900; letter-spacing: .02em; }
+    .trip-meta { color: var(--muted); font-weight: 700; font-size: .88rem; white-space: nowrap; }
+    .card { background: color-mix(in srgb, var(--paper) 96%, transparent); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .focus-card { position: relative; overflow: hidden; padding: clamp(20px, 5vw, 34px); }
+    .focus-card::after { content: ""; position: absolute; width: 190px; height: 190px; border-radius: 50%; right: -75px; top: -90px; background: color-mix(in srgb, var(--brand-2) 18%, transparent); }
+    .eyebrow { margin: 0 0 7px; color: var(--brand); font-size: .78rem; font-weight: 900; letter-spacing: .17em; text-transform: uppercase; }
+    .focus-card h1 { position: relative; margin: 0; max-width: 760px; font-size: clamp(1.45rem, 5.8vw, 2.65rem); line-height: 1.2; letter-spacing: -.025em; }
+    .event-time { margin-top: 8px; color: var(--muted); font-weight: 750; }
+    .countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 24px; max-width: 700px; }
+    .count-unit { padding: 13px 7px 11px; text-align: center; background: var(--paper-2); border: 1px solid var(--line); border-radius: 16px; }
+    .count-unit b { display: block; color: var(--brand); font-size: clamp(1.55rem, 8vw, 3.4rem); line-height: 1; font-variant-numeric: tabular-nums; }
+    .count-unit span { display: block; margin-top: 7px; color: var(--muted); font-size: .76rem; font-weight: 800; }
+    .timezone-note { margin: 15px 0 0; color: var(--muted); font-size: .84rem; }
+    nav { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 15px 0 3px; position: sticky; top: 0; z-index: 10; background: linear-gradient(var(--bg) 78%, transparent); }
+    nav::-webkit-scrollbar { display: none; }
+    nav a { flex: 0 0 auto; padding: 9px 13px; border: 1px solid var(--line); background: var(--paper); border-radius: 999px; text-decoration: none; font-size: .86rem; font-weight: 850; }
+    section { margin-top: 30px; scroll-margin-top: 78px; }
+    .section-head { display: flex; justify-content: space-between; gap: 18px; align-items: end; margin: 0 3px 12px; }
+    .section-head h2 { margin: 0; font-size: clamp(1.35rem, 4.8vw, 2rem); line-height: 1.15; }
+    .section-head p { margin: 0; color: var(--muted); font-size: .86rem; text-align: right; }
+    .overview-map { padding: 14px; overflow: hidden; }
+    .overview-map svg { display: block; width: 100%; height: auto; min-height: 350px; }
+    .map-land { fill: color-mix(in srgb, var(--brand) 9%, var(--paper)); stroke: var(--line); stroke-width: 3; stroke-linejoin: round; }
+    .route { fill: none; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 3 13; filter: drop-shadow(0 2px 0 color-mix(in srgb, var(--paper) 80%, transparent)); }
+    .place-dot { fill: var(--paper); stroke: var(--ink); stroke-width: 3; }
+    .night-dot { fill: var(--gold); stroke: var(--ink); stroke-width: 3; }
+    .map-label { fill: var(--ink); font-size: 16px; font-weight: 900; paint-order: stroke; stroke: var(--paper); stroke-width: 5px; stroke-linejoin: round; }
+    .map-sub { fill: var(--muted); font-size: 12px; font-weight: 800; paint-order: stroke; stroke: var(--paper); stroke-width: 4px; }
+    .legend { display: flex; flex-wrap: wrap; gap: 8px 14px; padding: 8px 5px 4px; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; font-size: .78rem; color: var(--muted); font-weight: 800; }
+    .legend i { width: 22px; height: 5px; border-radius: 5px; background: var(--c); }
+    .booking-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .booking { padding: 18px; }
+    .booking-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .booking h3 { margin: 0; font-size: 1.06rem; line-height: 1.3; }
+    .status { flex: 0 0 auto; padding: 4px 9px; color: var(--brand); background: color-mix(in srgb, var(--brand) 12%, transparent); border-radius: 99px; font-size: .72rem; font-weight: 900; }
+    .booking-time { margin: 12px 0 9px; font-weight: 900; }
+    .booking p { margin: 4px 0; color: var(--muted); font-size: .9rem; }
+    .booking a, .place-link, .source-link { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .privacy { margin: 11px 3px 0; color: var(--muted); font-size: .82rem; }
+    .days { display: grid; gap: 13px; }
+    .day { overflow: hidden; }
+    .day-head { padding: 18px 20px 11px; display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+    .date-badge { color: var(--brand); font-size: .78rem; font-weight: 950; letter-spacing: .1em; }
+    .day h3 { margin: 1px 0 0; font-size: 1.25rem; line-height: 1.25; }
+    .sleep { color: var(--muted); text-align: right; font-size: .8rem; font-weight: 800; }
+    .day-route { border-top: 1px dashed var(--line); border-bottom: 1px dashed var(--line); background: var(--paper-2); }
+    .day-route summary { cursor: pointer; padding: 11px 20px; color: var(--brand); font-size: .87rem; font-weight: 900; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .day-route summary::-webkit-details-marker { display: none; }
+    .day-route summary::after { content: "＋"; font-size: 1.15rem; }
+    .day-route[open] summary::after { content: "－"; }
+    .route-panel { padding: 0 18px 15px; }
+    .mini-map { width: 100%; height: auto; display: block; margin-bottom: 9px; }
+    .nav-all { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 8px 13px; border-radius: 12px; background: var(--brand); color: var(--bg); text-decoration: none; font-size: .84rem; font-weight: 900; }
+    .timeline { padding: 5px 20px 18px; }
+    .timeline-row { display: grid; grid-template-columns: 98px minmax(0, 1fr); gap: 13px; position: relative; padding: 13px 0; }
+    .timeline-row + .timeline-row { border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent); }
+    .time { font-weight: 900; font-variant-numeric: tabular-nums; color: var(--brand); }
+    .time small { display: block; color: var(--muted); font-size: .7rem; line-height: 1.2; }
+    .event h4 { margin: 0; font-size: 1rem; }
+    .event p { margin: 3px 0 0; color: var(--muted); font-size: .88rem; }
+    .tag { display: inline-block; margin-left: 6px; padding: 2px 7px; border-radius: 99px; vertical-align: 2px; color: var(--warning); background: color-mix(in srgb, var(--warning) 12%, transparent); font-size: .68rem; font-weight: 950; }
+    .risk { margin: 2px 20px 18px; padding: 11px 13px; border-left: 4px solid var(--warning); background: color-mix(in srgb, var(--warning) 8%, var(--paper)); border-radius: 4px 12px 12px 4px; font-size: .86rem; }
+    .todo-card, .tips-card { padding: 6px 20px; }
+    .plain-list { margin: 0; padding: 0; list-style: none; }
+    .plain-list li { padding: 14px 0 14px 27px; position: relative; }
+    .plain-list li + li { border-top: 1px solid var(--line); }
+    .plain-list li::before { content: "→"; position: absolute; left: 0; top: 14px; color: var(--brand); font-weight: 950; }
+    .plain-list b { display: block; }
+    .plain-list span { display: block; color: var(--muted); font-size: .87rem; }
+    .tips-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 22px; }
+    .tip { padding: 15px 0; }
+    .tip:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .tip h3 { margin: 0; font-size: 1rem; }
+    .tip p { margin: 4px 0 0; color: var(--muted); font-size: .88rem; }
+    footer { padding-top: 28px; text-align: center; color: var(--muted); font-size: .78rem; }
+    .offline { display: inline-block; padding: 7px 11px; border: 1px solid var(--line); border-radius: 99px; background: var(--paper); }
+    @media (max-width: 700px) {
+      .shell { width: min(100% - 18px, 1080px); padding-top: 10px; }
+      .booking-grid, .tips-grid { grid-template-columns: 1fr; }
+      .tip + .tip { border-top: 1px solid var(--line); }
+      .day-head { padding: 16px 15px 10px; }
+      .timeline { padding: 4px 15px 15px; }
+      .timeline-row { grid-template-columns: 78px minmax(0, 1fr); gap: 10px; }
+      .route-panel { padding-inline: 13px; }
+      .day-route summary { padding-inline: 15px; }
+      .overview-map { padding: 7px; }
+      .overview-map svg { min-height: 330px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media print {
+      body { background: white; }
+      .shell { width: 100%; padding: 0; }
+      nav { display: none; }
+      .card { box-shadow: none; break-inside: avoid; }
+      .day-route:not([open]) .route-panel { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="topline">
+      <div class="trip-title">ALASKA · 2026</div>
+      <div class="trip-meta">9月11日—19日 · 2人</div>
+    </div>
+
+    <section class="card focus-card" id="focus" aria-live="polite">
+      <p class="eyebrow">此刻关注</p>
+      <h1 id="next-title">正在读取下一个行程…</h1>
+      <div class="event-time" id="next-time"></div>
+      <div class="countdown" aria-label="倒计时">
+        <div class="count-unit"><b id="cd-day">--</b><span>天</span></div>
+        <div class="count-unit"><b id="cd-hour">--</b><span>时</span></div>
+        <div class="count-unit"><b id="cd-minute">--</b><span>分</span></div>
+        <div class="count-unit"><b id="cd-second">--</b><span>秒</span></div>
+      </div>
+      <p class="timezone-note">倒计时使用事件的绝对时间计算，不受打开网页所在时区影响。阿拉斯加行程均为 AKDT（UTC−8）。</p>
+    </section>
+
+    <nav aria-label="页面导航">
+      <a href="#map">总览地图</a><a href="#bookings">已确认</a><a href="#days">逐日行程</a><a href="#todo">待办</a><a href="#tips">实用贴士</a>
+    </nav>
+
+    <section id="map">
+      <div class="section-head"><h2>行程总览地图</h2><p>彩色虚线按天标记 · 金色为住宿</p></div>
+      <div class="card overview-map">
+        <svg viewBox="0 0 900 520" role="img" aria-label="安克雷奇、帕尔默、塔尔基特纳、德纳里、北极和费尔班克斯房车路线示意图">
+          <path class="map-land" d="M114 437 C84 370 91 286 134 226 C173 172 225 139 302 119 C359 104 392 77 458 74 C514 71 567 94 608 133 C660 183 722 201 769 258 C815 315 822 389 780 437 C735 486 651 480 581 465 C509 450 438 484 367 476 C287 467 196 484 114 437Z"/>
+          <path class="route" stroke="#dd5b48" d="M180 407 Q217 367 247 344"/>
+          <path class="route" stroke="#e6a62d" d="M247 344 Q341 274 416 232 Q474 190 518 158"/>
+          <path class="route" stroke="#627acb" d="M518 158 Q552 103 622 95"/>
+          <path class="route" stroke="#25a07f" d="M622 95 Q665 78 711 94 Q690 130 658 151"/>
+          <path class="route" stroke="#9a66bf" d="M658 151 Q505 228 397 293 Q278 365 180 407"/>
+          <circle class="place-dot" cx="180" cy="407" r="10"/><circle class="night-dot" cx="247" cy="344" r="10"/>
+          <circle class="place-dot" cx="416" cy="232" r="9"/><circle class="night-dot" cx="518" cy="158" r="10"/>
+          <circle class="night-dot" cx="622" cy="95" r="10"/><circle class="place-dot" cx="711" cy="94" r="9"/>
+          <circle class="night-dot" cx="658" cy="151" r="10"/>
+          <text class="map-label" x="112" y="432">Anchorage</text><text class="map-sub" x="111" y="452">9/11、9/17</text>
+          <text class="map-label" x="260" y="350">Palmer</text><text class="map-sub" x="260" y="369">9/12</text>
+          <text class="map-label" x="345" y="221">Talkeetna</text>
+          <text class="map-label" x="452" y="147">Denali</text><text class="map-sub" x="452" y="168">9/13—15</text>
+          <text class="map-label" x="538" y="79">North Pole</text><text class="map-sub" x="538" y="101">9/15</text>
+          <text class="map-label" x="718" y="83">Chena</text>
+          <text class="map-label" x="669" y="174">Fairbanks</text><text class="map-sub" x="669" y="194">9/15—17</text>
+        </svg>
+        <div class="legend">
+          <span><i style="--c:#dd5b48"></i>9/12</span><span><i style="--c:#e6a62d"></i>9/13</span><span><i style="--c:#627acb"></i>9/15</span><span><i style="--c:#25a07f"></i>9/16</span><span><i style="--c:#9a66bf"></i>9/17</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="bookings">
+      <div class="section-head"><h2>已经确认</h2><p>确认号与私人资料已隐去</p></div>
+      <div class="booking-grid" id="booking-grid"></div>
+      <p class="privacy">公开页面不会出现确认号、证件号、家庭住址、邮箱、银行卡信息或房间号。</p>
+    </section>
+
+    <section id="days">
+      <div class="section-head"><h2>逐日行程</h2><p>点地点直接导航 · 展开查看当日路线</p></div>
+      <div class="days" id="day-list"></div>
+    </section>
+
+    <section id="todo">
+      <div class="section-head"><h2>待办清单</h2><p>完成后告诉我，我会更新公开页面</p></div>
+      <div class="card todo-card">
+        <ul class="plain-list">
+          <li><b>确认 After Hours 到达邮件</b><span>请租车公司确认已记录 AA399 19:13 抵达，并重发房车位置、钥匙与夜间进场说明。</span></li>
+          <li><b>支付冰川活动尾款</b><span>订单现有尾款未付；同时确认活动正式结束时间是 18:00，19:00 仅作为天气和返场缓冲。</span></li>
+          <li><b>预订 9 月 12 日 <a href="https://koa.com/campgrounds/palmer/general-information/" target="_blank" rel="noreferrer">Palmer KOA</a></b><span>按 25 ft、2 人、1 辆房车预订，并备注可能晚到；官网明确有夜间登记箱。</span></li>
+          <li><b>提交 9 月 17 日 <a href="https://www.alaskatraveladventures.com/rv-park/reservation-request-anchorage" target="_blank" rel="noreferrer">Ship Creek 预订申请</a></b><span>提交不等于确认。收到营位确认后，再电话核对晚到和车辆尺寸。</span></li>
+          <li><b>预订 9 月 16 日 <a href="https://www.chenahotsprings.com/?p=1891" target="_blank" rel="noreferrer">Aurora Ice Museum</a></b><span>全年开放但需要选择场次；提前 15 分钟到 Activities Center。</span></li>
+          <li><b>确认 9 月 18 日行李寄存</b><span>首选 ANC 机场 Huntleigh USA（行李提取 4 旁，907-248-0373）；先电话确认当天营业时间。若不可用，询问租车公司能否临时保管。</span></li>
+          <li><b>出发前下载 <a href="https://www.nps.gov/dena/planyourvisit/courtesy-shuttle-buses.htm" target="_blank" rel="noreferrer">Denali 免费巴士时刻表</a></b><span>园内信号不稳定；9 月 15 日若启用雨天备选，必须搭最早班。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="tips">
+      <div class="section-head"><h2>实用贴士</h2><p>按这辆 22M 房车和 9 月路况准备</p></div>
+      <div class="card tips-card"><div class="tips-grid">
+        <article class="tip"><h3>房车尺寸</h3><p>约 24′5″ 长、11′ 高、8′5.5″ 宽。订营位统一填 25 ft；进停车场、加油站和树下先看限高。</p></article>
+        <article class="tip"><h3>驾驶节奏</h3><p>地图时间至少增加 20% 房车缓冲。9 月 17 日 Fairbanks → Anchorage 是全程最累的一天，按约 8 小时含停车安排。</p></article>
+        <article class="tip"><h3>昼夜与极光</h3><p>网页按 Anchorage 当地时间自动切换配色。看极光先查看云量与 Kp；不要为了追光疲劳驾驶。</p></article>
+        <article class="tip"><h3>衣物</h3><p>冰川活动穿排汗层、保暖层和防水外层，带手套、帽子、墨镜与闭趾鞋；运营方提供干式服与冰爪。</p></article>
+        <article class="tip"><h3>燃油与水箱</h3><p>长途当天半箱油就开始找加油站。还车前加满油、排灰黑水并预留清洁时间，目标 10:45 抵达还车点。</p></article>
+        <article class="tip"><h3>开放日核对</h3><p>Morris Thompson 9 月每日 08:00–17:00且免费；Chena 冰雕博物馆全年开放但要选场次；Anchorage Museum 9 月每日 10:00–18:00。</p></article>
+        <article class="tip"><h3>离线使用</h3><p>页面本身可离线打开；Google 地图导航仍需要网络。出发前在 Google Maps 下载 Anchorage、Parks Highway、Fairbanks 离线地图。</p></article>
+        <article class="tip"><h3>紧急与通信</h3><p>野外路段信号可能中断。每天出发前把油量、天气、轮胎和目的地地址截图保存；紧急情况拨 911。</p></article>
+      </div></div>
+    </section>
+
+    <footer><span class="offline">单文件 · 无外部依赖 · 可离线阅读</span></footer>
+  </main>
+
+  <script>
+    const mapUrl = q => `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(q)}`;
+    const routeUrl = stops => {
+      const [origin, ...rest] = stops;
+      const destination = rest.pop() || origin;
+      const waypoints = rest.length ? `&waypoints=${encodeURIComponent(rest.join('|'))}` : '';
+      return `https://www.google.com/maps/dir/?api=1&travelmode=driving&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}${waypoints}`;
+    };
+    const place = (name, query = name) => `<a class="place-link" href="${mapUrl(query)}" target="_blank" rel="noreferrer">${name}</a>`;
+
+    const bookings = [
+      { title:'AA1374 · 墨西哥城 → 达拉斯', time:'9月11日 07:00 CST → 11:01 CDT', detail:'MEX T1 → DFW · 美国航空', address:'Mexico City International Airport Terminal 1', phone:'+1 800-433-7300' },
+      { title:'AA399 · 达拉斯 → 安克雷奇', time:'9月11日 15:15 CDT → 19:13 AKDT', detail:'DFW → ANC South Terminal · 美国航空', address:'Ted Stevens Anchorage International Airport', phone:'+1 907-245-0503' },
+      { title:'Great Alaskan Holidays 房车', time:'9月11日夜间入住 · 9月12日 07:15 讲解', detail:'9月18日 11:30前还车 · Winnebago Minnie Winnie 22M', address:'9800 Old Seward Hwy, Anchorage, AK 99515', phone:'+1 907-248-7777' },
+      { title:'Outbound Heli 冰川徒步组合', time:'9月12日 12:00–18:00 AKDT', detail:'2人 · Paddleboarding + Glacier Trekking · 尾款待付', address:'3901 S Lindsey Cir F, Palmer, AK 99645', phone:'+1 907-351-6736' },
+      { title:'Riley Creek Campground', time:'9月13日入住 · 9月15日 11:00退营', detail:'2晚 · 30 ft以下房车营位 · 2人', address:'Riley Creek Campground, Denali National Park, AK', phone:'+1 866-761-6629' },
+      { title:'East Fork Transit', time:'9月14日 10:00–14:45 AKDT', detail:'2人 · 09:40前到 Denali Bus Depot', address:'Denali Bus Depot, Denali National Park, AK', phone:'+1 866-761-6629' },
+      { title:'Fairbanks / Chena River KOA', time:'9月15日入住 · 9月16日退营', detail:'Pull-through · Full hookups · 25 ft房车 · 2人', address:'1368 Old Badger Rd, North Pole, AK 99705', phone:'+1 907-802-2408' },
+      { title:'Ice Art RV Park & Campground', time:'9月16日入住 · 9月17日退营', detail:'Small RV Site · 2人', address:'3574 Phillips Field Rd, Fairbanks, AK 99709', phone:'+1 907-451-8250' },
+      { title:'AM3009 / DL925 · 安克雷奇 → 西雅图', time:'9月19日 01:32 AKDT → 06:07 PDT', detail:'墨西哥航空出票 · 达美实际承运', address:'Ted Stevens Anchorage International Airport', phone:'+1 907-249-2455' },
+      { title:'AM495 · 西雅图 → 墨西哥城', time:'9月19日 09:30 PDT → 16:00 CST', detail:'SEA → MEX T2 · 墨西哥航空', address:'Seattle-Tacoma International Airport', phone:'+1 800-237-6639' }
+    ];
+
+    document.getElementById('booking-grid').innerHTML = bookings.map(b => `
+      <article class="card booking">
+        <div class="booking-top"><h3>${b.title}</h3><span class="status">已确认</span></div>
+        <div class="booking-time">${b.time}</div>
+        <p>${b.detail}</p>
+        <p>📍 ${place(b.address)}</p>
+        <p>☎ <a href="tel:${b.phone.replace(/[^+\d]/g,'')}">${b.phone}</a></p>
+      </article>`).join('');
+
+    const days = [
+      { date:'9月11日 · 周五', title:'飞抵安克雷奇', sleep:'宿：租车公司场地内房车', color:'#d95e4b', stops:['Mexico City International Airport Terminal 1','Dallas Fort Worth International Airport','Ted Stevens Anchorage International Airport','Great Alaskan Holidays'], events:[
+        ['07:00','CST · UTC−6','AA1374 起飞','墨西哥城 T1 → 达拉斯；11:01 CDT 抵达。'],
+        ['15:15','CDT · UTC−5','AA399 起飞','达拉斯 → 安克雷奇；19:13 AKDT 抵达。'],
+        ['约20:15','AKDT · UTC−8',`前往 ${place('Great Alaskan Holidays','9800 Old Seward Hwy, Anchorage, AK 99515')}`,'自行打车或网约车；找到邮件注明的车辆和钥匙，当晚只住宿，不开车。']
+      ], risk:'必须提前收到夜间进场和钥匙位置邮件；如果出发前仍未收到，立即联系租车公司。'},
+      { date:'9月12日 · 周六', title:'取车 · 帕尔默冰川', sleep:'宿：Palmer KOA（待订）', color:'#dd5b48', stops:['Great Alaskan Holidays','Carrs Abbott Road Anchorage','Outbound Heli Adventures','Palmer / Anchorage North KOA Journey'], events:[
+        ['07:15','AKDT · UTC−8','房车讲解与取车','讲解约45分钟，完成文件后才能驾驶。'],
+        ['08:30','AKDT · UTC−8','采购食品和房车用品','控制在60分钟内；第一次驾驶留足适应时间。'],
+        ['10:00','AKDT · UTC−8',`驶往 ${place('Palmer','Palmer, Alaska')}`,'预计约1小时；最迟11:30抵达集合点。'],
+        ['12:00','AKDT · UTC−8',`${place('Outbound Heli','3901 S Lindsey Cir F, Palmer, AK 99645')} · 冰川桨板 + Glacier Trekking`,'订单为6小时；闭趾鞋、分层防水衣物。', '需确认/尾款'],
+        ['18:00–19:00','AKDT · UTC−8','返场缓冲并前往营地','19:00不是订单结束时间，而是为天气、直升机调度和换装预留。']
+      ], risk:'不要活动结束后再向南开回 Anchorage；住 Palmer 可减少夜间驾驶，也避免第二天折返。'},
+      { date:'9月13日 · 周日', title:'Talkeetna · 抵达 Denali', sleep:'宿：Riley Creek Campground', color:'#e6a62d', stops:['Palmer / Anchorage North KOA Journey','Talkeetna Alaska','Riley Creek Mercantile'], events:[
+        ['08:30','AKDT · UTC−8','离开 Palmer','先检查油量和饮水。'],
+        ['10:15','AKDT · UTC−8',`${place('Talkeetna 小镇','Talkeetna, Alaska')}`,'午餐、主街散步；不临时加入长时飞行项目。'],
+        ['13:15','AKDT · UTC−8','驶往 Denali','房车预计约3小时，途中安排一次休息。'],
+        ['16:30','AKDT · UTC−8',`${place('Riley Creek 办理入住','Riley Creek Mercantile, Denali National Park')}`,'先到 Mercantile 核验营位，再进入营地。'],
+        ['18:00','AKDT · UTC−8',`${place('Horseshoe Lake 轻松散步','Horseshoe Lake Trailhead, Denali National Park')}`,'按体力选择短线。']
+      ], risk:'营位为先到先选；不要先直接占位，必须先去 Riley Creek Mercantile 办理入住。'},
+      { date:'9月14日 · 周一', title:'East Fork 巴士 · Savage备选', sleep:'宿：Riley Creek Campground', color:'#ef8460', stops:['Riley Creek Campground','Denali Bus Depot','East Fork Toklat River','Savage Alpine Trail'], events:[
+        ['09:20','AKDT · UTC−8',`前往 ${place('Denali Bus Depot','Denali Bus Depot, Denali National Park')}`,'预订要求至少提前20分钟到。'],
+        ['10:00–14:45','AKDT · UTC−8','East Fork Transit','已订票；带午餐、水和保暖层。'],
+        ['15:20','AKDT · UTC−8',`${place('Savage Alpine Trail','Savage Alpine Trail, Denali National Park')} 决策点`,'仅在无雨、低风、能见度好且体力充足时开始。', '天气允许才走'],
+        ['18:30前','AKDT · UTC−8','结束徒步并返营','若条件不理想，直接取消，不硬走。']
+      ], risk:'Savage Alpine 约4英里单程、爬升明显；巴士行程后再走强度较高。天气差时改为9月15日免费观景巴士。'},
+      { date:'9月15日 · 周二', title:'Denali → North Pole', sleep:'宿：Fairbanks / Chena River KOA', color:'#627acb', stops:['Riley Creek Campground','Santa Claus House North Pole','Fairbanks Chena River KOA Journey'], events:[
+        ['08:20','AKDT · UTC−8','雨天备选：Savage River Shuttle','仅在前一天取消徒步时执行；纯乘车往返约2小时。'],
+        ['11:00前','AKDT · UTC−8','退营并驶往 North Pole','若搭免费巴士，需提前收营，回来立即离开。'],
+        ['14:00','AKDT · UTC−8',`${place('Santa Claus House','101 St Nicholas Dr, North Pole, AK 99705')}`,'9月14日起每日10:00–18:00；驯鹿项目已于9月13日结束。'],
+        ['16:30','AKDT · UTC−8',`${place('Fairbanks KOA 入住','1368 Old Badger Rd, North Pole, AK 99705')}`,'25 ft pull-through、full hookups。'],
+        ['22:00后','AKDT · UTC−8','按云量决定是否看极光','只在精神状态良好、道路安全时短距离观测。']
+      ], risk:'最早班免费巴士加上11:00退营时间很紧，只适合乘车观景，不适合完成 Savage Alpine 徒步。'},
+      { date:'9月16日 · 周三', title:'Fairbanks文化 · Chena温泉', sleep:'宿：Ice Art RV Park', color:'#25a07f', stops:['Fairbanks Chena River KOA Journey','Morris Thompson Cultural and Visitors Center','Chena Hot Springs Resort','Ice Art RV Park & Campground'], events:[
+        ['08:30','AKDT · UTC−8',`${place('Morris Thompson Center','101 Dunkel St, Fairbanks, AK 99701')}`,'免费，9月每日08:00–17:00；看展并领取公路信息。'],
+        ['10:30','AKDT · UTC−8','Fairbanks午餐与补给','把晚间食物一起买好。'],
+        ['12:00','AKDT · UTC−8','驶往 Chena Hot Springs','单程约1小时15分，山路留缓冲。'],
+        ['14:00','AKDT · UTC−8',`${place('Aurora Ice Museum','17600 Chena Hot Springs Rd, Fairbanks, AK 99712')}`,'45分钟，需选场次并提前15分钟集合。', '提前订票'],
+        ['15:30','AKDT · UTC−8','温泉或园区自由活动','根据疲劳程度决定停留。'],
+        ['18:30','AKDT · UTC−8',`返回 ${place('Ice Art RV Park','3574 Phillips Field Rd, Fairbanks, AK 99709')}`,'避免深夜走 Chena Hot Springs Road。']
+      ], risk:'Chena 往返约2.5小时驾驶；冰雕馆全年开放不等于随到随进，必须预约具体场次。'},
+      { date:'9月17日 · 周四', title:'Fairbanks → Anchorage', sleep:'宿：Ship Creek（待确认）', color:'#9a66bf', stops:['Ice Art RV Park & Campground','Nenana Alaska','Denali Viewpoint South','Ship Creek RV Park'], events:[
+        ['08:00','AKDT · UTC−8','离开 Fairbanks','这是全程最长驾驶日，尽量不要拖到11:00才出发。'],
+        ['09:15','AKDT · UTC−8',`${place('Nenana 短休息','Nenana, Alaska')}`,'伸展、加油或咖啡。'],
+        ['12:00','AKDT · UTC−8','沿 Parks Highway 午餐','选择方便房车进出的停车点。'],
+        ['14:30','AKDT · UTC−8','观景点短停','只在天气和停车条件合适时停留。'],
+        ['17:00–18:00','AKDT · UTC−8',`抵达 ${place('Ship Creek','150 N Ingra St, Anchorage, AK 99501')}`,'预订尚未确认；收到确认前不能视为已有营位。']
+      ], risk:'纯驾驶通常约6.5小时，房车加休息按8小时安排。若睡眠不足或天气恶化，应删掉观景停靠。'},
+      { date:'9月18日 · 周五', title:'还车 · Anchorage城市与美食', sleep:'夜间前往 ANC 候机', color:'#2f80b5', stops:['Ship Creek RV Park','Great Alaskan Holidays','Ted Stevens Anchorage International Airport','Anchorage Museum','49th State Brewing Anchorage','Ted Stevens Anchorage International Airport'], events:[
+        ['08:00','AKDT · UTC−8','排污、加油、整理房车','确认个人物品、燃油和水箱状态。'],
+        ['10:45','AKDT · UTC−8',`抵达 ${place('Great Alaskan Holidays','9800 Old Seward Hwy, Anchorage, AK 99515')}`,'合同截止11:30，提前到避免迟还费用。'],
+        ['12:15','AKDT · UTC−8',`先去 ${place('ANC','Ted Stevens Anchorage International Airport')} 寄存行李`,'Huntleigh USA 位于行李提取4旁；营业时间必须提前电话确认。', '需确认'],
+        ['13:15','AKDT · UTC−8',`${place('Anchorage Museum','625 C St, Anchorage, AK 99501')}`,'9月每日10:00–18:00；周五开放。可现场购票。'],
+        ['16:15','AKDT · UTC−8','市中心步行','Town Square、4th Ave、Cook Inlet方向，按天气调整。'],
+        ['17:30','AKDT · UTC−8',`${place('49th State Brewing','717 W 3rd Ave, Anchorage, AK 99501')} 晚餐`,'可尝试本地海鲜；一楼和吧台开放座位，热门时段可能排队。'],
+        ['21:30','AKDT · UTC−8','返回 ANC','取行李、办理国际联程手续；凌晨01:32起飞。']
+      ], risk:'还车到凌晨航班相隔约14小时。行李寄存营业时间是关键依赖；若无法寄存，需要租车公司保管或安排日用酒店。'},
+      { date:'9月19日 · 周六', title:'西雅图转机 · 返回墨西哥城', sleep:'旅程结束', color:'#5e8fac', stops:['Ted Stevens Anchorage International Airport','Seattle-Tacoma International Airport','Mexico City International Airport Terminal 2'], events:[
+        ['01:32','AKDT · UTC−8','AM3009 / DL925 起飞','达美实际承运；06:07 PDT 抵达西雅图。'],
+        ['09:30','PDT · UTC−7','AM495 起飞','前往墨西哥城；16:00 CST 抵达 T2。']
+      ], risk:'同一天跨三个时区。页面时间均按出发或到达城市当地时间标注，不要用手机所在地时区自行换算。'}
+    ];
+
+    const miniMap = (stops, color) => {
+      const width = 760, y = 50, pad = 48, usable = width - pad * 2;
+      const points = stops.map((s,i) => ({x: pad + usable * (stops.length === 1 ? 0 : i/(stops.length-1)), s}));
+      const path = points.map((p,i) => `${i?'L':'M'} ${p.x} ${y + (i%2 ? 10 : -5)}`).join(' ');
+      return `<svg class="mini-map" viewBox="0 0 ${width} 115" role="img" aria-label="${stops.join(' 到 ')}路线示意">
+        <path d="${path}" fill="none" stroke="${color}" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 12"/>
+        ${points.map((p,i) => `<circle cx="${p.x}" cy="${y + (i%2 ? 10 : -5)}" r="8" fill="var(--paper)" stroke="${color}" stroke-width="4"/><text x="${p.x}" y="${i%2 ? 94 : 24}" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="850">${stops.length>4 ? (i+1)+'. '+p.s.split(' ')[0] : p.s.replace(' International Airport','').replace(' Campground','')}</text>`).join('')}
+      </svg>`;
+    };
+
+    document.getElementById('day-list').innerHTML = days.map((d,di) => `
+      <article class="card day">
+        <div class="day-head"><div><div class="date-badge">DAY ${di+1} · ${d.date}</div><h3>${d.title}</h3></div><div class="sleep">${d.sleep}</div></div>
+        <details class="day-route">
+          <summary>展开当日路线地图</summary>
+          <div class="route-panel">${miniMap(d.stops,d.color)}<a class="nav-all" href="${routeUrl(d.stops)}" target="_blank" rel="noreferrer">一键打开全天多点导航 ↗</a></div>
+        </details>
+        <div class="timeline">${d.events.map(e => `<div class="timeline-row"><div class="time">${e[0]}<small>${e[1]}</small></div><div class="event"><h4>${e[2]}${e[4]?`<span class="tag">${e[4]}</span>`:''}</h4><p>${e[3]}</p></div></div>`).join('')}</div>
+        <div class="risk"><strong>注意：</strong>${d.risk}</div>
+      </article>`).join('');
+
+    const schedule = [
+      ['AA1374 从墨西哥城起飞','2026-09-11T07:00:00-06:00','9月11日 07:00 CST（墨西哥城，UTC−6）'],
+      ['AA399 从达拉斯起飞','2026-09-11T15:15:00-05:00','9月11日 15:15 CDT（达拉斯，UTC−5）'],
+      ['抵达安克雷奇','2026-09-11T19:13:00-08:00','9月11日 19:13 AKDT（安克雷奇，UTC−8）'],
+      ['房车取车讲解','2026-09-12T07:15:00-08:00','9月12日 07:15 AKDT（安克雷奇，UTC−8）'],
+      ['冰川徒步活动集合','2026-09-12T12:00:00-08:00','9月12日 12:00 AKDT（Palmer，UTC−8）'],
+      ['East Fork Transit 发车','2026-09-14T10:00:00-08:00','9月14日 10:00 AKDT（Denali，UTC−8）'],
+      ['房车还车截止','2026-09-18T11:30:00-08:00','9月18日 11:30 AKDT（安克雷奇，UTC−8）'],
+      ['AM3009 / DL925 起飞','2026-09-19T01:32:00-08:00','9月19日 01:32 AKDT（安克雷奇，UTC−8）'],
+      ['AM495 从西雅图起飞','2026-09-19T09:30:00-07:00','9月19日 09:30 PDT（西雅图，UTC−7）']
+    ].map(x => ({title:x[0], at:new Date(x[1]), label:x[2]}));
+
+    function updateCountdown(){
+      const now = new Date();
+      const next = schedule.find(e => e.at > now);
+      if(!next){
+        document.getElementById('next-title').textContent = '阿拉斯加旅程已完成';
+        document.getElementById('next-time').textContent = '愿这段公路、冰川和极光留在你们的记忆里。';
+        ['day','hour','minute','second'].forEach(id => document.getElementById('cd-'+id).textContent = '00');
+        return;
+      }
+      const diff = Math.max(0, next.at - now);
+      const daysLeft = Math.floor(diff / 86400000);
+      const hours = Math.floor(diff / 3600000) % 24;
+      const minutes = Math.floor(diff / 60000) % 60;
+      const seconds = Math.floor(diff / 1000) % 60;
+      document.getElementById('next-title').textContent = next.title;
+      document.getElementById('next-time').textContent = next.label;
+      document.getElementById('cd-day').textContent = String(daysLeft).padStart(2,'0');
+      document.getElementById('cd-hour').textContent = String(hours).padStart(2,'0');
+      document.getElementById('cd-minute').textContent = String(minutes).padStart(2,'0');
+      document.getElementById('cd-second').textContent = String(seconds).padStart(2,'0');
+    }
+    function setAlaskaTheme(){
+      const hour = Number(new Intl.DateTimeFormat('en-US',{timeZone:'America/Anchorage',hour:'2-digit',hour12:false}).format(new Date()));
+      const night = hour < 7 || hour >= 19;
+      document.documentElement.dataset.theme = night ? 'night' : 'day';
+      document.querySelector('meta[name="theme-color"]').content = night ? '#071b24' : '#0d5b54';
+    }
+    setAlaskaTheme(); updateCountdown();
+    setInterval(updateCountdown,1000); setInterval(setAlaskaTheme,60000);
+  </script>
+</body>
+</html>
+
