@@ -86,12 +86,15 @@
     .legend { display: flex; flex-wrap: wrap; gap: 8px 14px; padding: 8px 5px 4px; }
     .legend span { display: inline-flex; align-items: center; gap: 6px; font-size: .78rem; color: var(--muted); font-weight: 800; }
     .legend i { width: 22px; height: 5px; border-radius: 5px; background: var(--c); }
-    .booking-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-    .booking { padding: 18px; }
+    .booking-grid { margin:0; padding:0 18px; list-style:none; }
+    .booking + .booking { border-top:1px solid var(--line); }
+    .booking details summary { cursor:pointer; color:var(--muted); font-size:.82rem; }
+    .status.pending { color:var(--warning); }
+    .booking { padding: 11px 0; }
     .booking-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .booking h3 { margin: 0; font-size: 1.06rem; line-height: 1.3; }
     .status { flex: 0 0 auto; padding: 4px 9px; color: var(--brand); background: color-mix(in srgb, var(--brand) 12%, transparent); border-radius: 99px; font-size: .72rem; font-weight: 900; }
-    .booking-time { margin: 12px 0 9px; font-weight: 900; }
+    .booking-time { margin: 3px 0; font-weight: 750; font-size:.86rem; }
     .booking p { margin: 4px 0; color: var(--muted); font-size: .9rem; }
     .booking a, .place-link, .source-link { text-decoration-thickness: 1px; text-underline-offset: 3px; }
     .privacy { margin: 11px 3px 0; color: var(--muted); font-size: .82rem; }
@@ -175,7 +178,7 @@
     </section>
 
     <nav aria-label="页面导航">
-      <a href="#map">总览地图</a><a href="#bookings">已确认</a><a href="#days">逐日行程</a><a href="#todo">待办</a><a href="#tips">实用贴士</a>
+      <a href="#map">总览地图</a><a href="#days">逐日行程</a><a href="#bookings">预订列表</a><a href="#todo">待办</a><a href="#tips">实用贴士</a>
     </nav>
 
     <section id="map">
@@ -196,9 +199,9 @@
           <text class="map-label" x="260" y="350">Palmer</text><text class="map-sub" x="260" y="369">9/12</text>
           <text class="map-label" x="345" y="221">Talkeetna</text>
           <text class="map-label" x="452" y="147">Denali</text><text class="map-sub" x="452" y="168">9/13—15</text>
-          <text class="map-label" x="538" y="79">North Pole</text><text class="map-sub" x="538" y="101">9/15</text>
+          <text class="map-label" x="538" y="79">North Pole</text><text class="map-sub" x="538" y="101">9/16</text>
           <text class="map-label" x="718" y="83">Chena</text>
-          <text class="map-label" x="669" y="174">Fairbanks</text><text class="map-sub" x="669" y="194">9/15—17</text>
+          <text class="map-label" x="669" y="174">Fairbanks</text><text class="map-sub" x="669" y="194">9/15（改期待回复）</text>
         </svg>
         <div class="legend">
           <span><i style="--c:#dd5b48"></i>9/12</span><span><i style="--c:#e6a62d"></i>9/13</span><span><i style="--c:#627acb"></i>9/15</span><span><i style="--c:#25a07f"></i>9/16</span><span><i style="--c:#9a66bf"></i>9/17</span>
@@ -206,21 +209,23 @@
       </div>
     </section>
 
-    <section id="bookings">
-      <div class="section-head"><h2>已经确认</h2><p>确认号与私人资料已隐去</p></div>
-      <div class="booking-grid" id="booking-grid"></div>
-      <p class="privacy">公开页面不会出现确认号、证件号、家庭住址、邮箱、银行卡信息或房间号。</p>
-    </section>
-
     <section id="days">
       <div class="section-head"><h2>逐日行程</h2><p>点地点直接导航 · 展开查看当日路线</p></div>
       <div class="days" id="day-list"></div>
+    </section>
+
+    <section id="bookings">
+      <div class="section-head"><h2>预订列表</h2><p>时间一眼可见 · 展开地址与电话</p></div>
+      <ul class="card booking-grid" id="booking-grid"></ul>
+      <p class="privacy">阿拉斯加当地时间均为 AKDT（UTC−8）。公开页面不含确认号、证件号及私人资料。</p>
     </section>
 
     <section id="todo">
       <div class="section-head"><h2>待办清单</h2><p>完成后告诉我，我会更新公开页面</p></div>
       <div class="card todo-card">
         <ul class="plain-list">
+          <li><b>等待 Ice Art 改期至9月15日的确认</b><span>改期申请已发出，尚未回复；15日晚住宿仍未确认。原16日订单在收到改期成功前仍可能有效，需留意与16日KOA重叠。</span></li>
+          <li><b>确认亚洲超市房车短停及 Chena 日间停车</b><span>东方超市 907-277-0107；MiMi 907-880-5288；Chena 907-451-8104。说明25 ft房车，只短停采购或日游，询问推荐入口与停车区域；Chena到访日期为9月16日。</span></li>
           <li><b>确认 After Hours 到达邮件</b><span>请租车公司确认已记录 AA399 19:13 抵达，并重发房车位置、钥匙与夜间进场说明。</span></li>
           <li><b>支付冰川活动尾款</b><span>订单现有尾款未付；同时确认活动正式结束时间是 18:00，19:00 仅作为天气和返场缓冲。</span></li>
           <li><b>提交 9 月 17 日 <a href="https://www.alaskatraveladventures.com/rv-park/reservation-request-anchorage" target="_blank" rel="noreferrer">Ship Creek 预订申请</a></b><span>提交不等于确认。收到营位确认后，再电话核对晚到和车辆尺寸。</span></li>
@@ -239,7 +244,10 @@
         <article class="tip"><h3>昼夜与极光</h3><p>网页按 Anchorage 当地时间自动切换配色。看极光先查看云量与 Kp；不要为了追光疲劳驾驶。</p></article>
         <article class="tip"><h3>衣物</h3><p>冰川活动穿排汗层、保暖层和防水外层，带手套、帽子、墨镜与闭趾鞋；运营方提供干式服与冰爪。</p></article>
         <article class="tip"><h3>燃油与水箱</h3><p>长途当天半箱油就开始找加油站。还车前加满油、排灰黑水并预留清洁时间，目标 10:45 抵达还车点。</p></article>
-        <article class="tip"><h3>三次采购怎么分</h3><p>9月11日晚 Walmart 买水、早餐和大件；12日早 New Sagaya 只补亚洲调料与鲜食；13日离开 Palmer 时用 Fred Meyer 查漏补缺。公开营业时间临时可能调整，出发前再点地图确认。</p></article>
+        <article class="tip"><h3>三次采购怎么分</h3><p>11日晚 Walmart 先买2–3天基础食品；12日东方超市快速补亚洲食材；13日 Palmer 只补够到15日的生鲜；15日 MiMi 再买后半程食物。留少量常温备用餐，无需一次买足全程。</p></article>
+        <article class="tip"><h3>房车采购停车</h3><p>Walmart、Palmer Fred Meyer / Carrs 按大型商店顾客停车场规划，未取得店方对25 ft房车的明确承诺。MiMi 位于 Gavora Mall，街景可见共享露天停车场；东方超市门前空间较小，先确认再进。选外围空位、不挡通道，停车采购不代表允许过夜。</p></article>
+        <article class="tip"><h3>Chena 房车日游</h3><p>度假村接待房车，通常可沿 Chena Hot Springs Road 自驾；每程预留1.5–2小时。9月16日已超过官方营地、供水与排污服务季（截至9月15日），只安排日游并提前问日间房车停车。当天查看 <a href="https://511.alaska.gov" target="_blank" rel="noreferrer">Alaska 511</a>。</p></article>
+        <article class="tip"><h3>采购与道路来源</h3><p><a href="https://www.google.com/maps/search/?api=1&query=Oriental+Shopping+Center+408+E+Fireweed+Anchorage" target="_blank" rel="noreferrer">东方超市地图</a> · <a href="https://www.google.com/maps/search/?api=1&query=MiMi+Asian+Mart+250+3rd+St+Fairbanks" target="_blank" rel="noreferrer">MiMi 地图与街景</a> · <a href="https://www.chenahotsprings.com/chena-shuttle/" target="_blank" rel="noreferrer">Chena交通</a> · <a href="https://www.chenahotsprings.com/camping-rvs/" target="_blank" rel="noreferrer">Chena房车设施</a>。地图与营业时间核对于2026年9月5日；停车空间判断不等于商家许可。</p></article>
         <article class="tip"><h3>开放日核对</h3><p>Morris Thompson 9 月每日 08:00–17:00且免费；Chena 冰雕博物馆全年开放但要选场次；Anchorage Museum 9 月每日 10:00–18:00。</p></article>
         <article class="tip"><h3>离线使用</h3><p>页面本身可离线打开；Google 地图导航仍需要网络。出发前在 Google Maps 下载 Anchorage、Parks Highway、Fairbanks 离线地图。</p></article>
         <article class="tip"><h3>紧急与通信</h3><p>野外路段信号可能中断。每天出发前把油量、天气、轮胎和目的地地址截图保存；紧急情况拨 911。</p></article>
@@ -267,36 +275,37 @@
       { title:'Palmer / Anchorage North KOA', time:'9月12日 14:00后入住 · 9月13日 11:00退营', detail:'1晚 · Pull Thru · 30A电源＋供水 · 无营位下水 · 25 ft房车 · 2人', address:'2010 S Church St, Palmer, AK 99645', phone:'+1 907-745-7445' },
       { title:'Riley Creek Campground', time:'9月13日入住 · 9月15日 11:00退营', detail:'2晚 · 30 ft以下房车营位 · 2人', address:'Riley Creek Campground, Denali National Park, AK', phone:'+1 866-761-6629' },
       { title:'East Fork Transit', time:'9月14日 10:00–14:45 AKDT', detail:'2人 · 09:40前到 Denali Bus Depot', address:'Denali Bus Depot, Denali National Park, AK', phone:'+1 866-761-6629' },
-      { title:'Fairbanks / Chena River KOA', time:'9月15日入住 · 9月16日退营', detail:'Pull-through · Full hookups · 25 ft房车 · 2人', address:'1368 Old Badger Rd, North Pole, AK 99705', phone:'+1 907-802-2408' },
-      { title:'Ice Art RV Park & Campground', time:'9月16日入住 · 9月17日退营', detail:'Small RV Site · 2人', address:'3574 Phillips Field Rd, Fairbanks, AK 99709', phone:'+1 907-451-8250' },
+      { title:'Fairbanks / Chena River KOA', time:'9月16日入住 · 9月17日退营', detail:'Pull-through · Full hookups · 25 ft房车 · 2人', address:'1368 Old Badger Rd, North Pole, AK 99705', phone:'+1 907-802-2408' },
+      { title:'Ice Art RV Park & Campground', status:'改期待回复', time:'申请9月15日入住 · 9月16日退营', detail:'原订单9月16–17日；尚未收到改期确认 · Small RV Site · 2人', address:'3574 Phillips Field Rd, Fairbanks, AK 99709', phone:'+1 907-451-8250' },
       { title:'AM3009 / DL925 · 安克雷奇 → 西雅图', time:'9月19日 01:32 AKDT → 06:07 PDT', detail:'墨西哥航空出票 · 达美实际承运', address:'Ted Stevens Anchorage International Airport', phone:'+1 907-249-2455' },
       { title:'AM495 · 西雅图 → 墨西哥城', time:'9月19日 09:30 PDT → 16:00 CST', detail:'SEA → MEX T2 · 墨西哥航空', address:'Seattle-Tacoma International Airport', phone:'+1 800-237-6639' }
     ];
 
     document.getElementById('booking-grid').innerHTML = bookings.map(b => `
-      <article class="card booking">
-        <div class="booking-top"><h3>${b.title}</h3><span class="status">已确认</span></div>
+      <li class="booking">
+        <div class="booking-top"><h3>${b.title}</h3><span class="status ${b.status?'pending':''}">${b.status || '已确认'}</span></div>
         <div class="booking-time">${b.time}</div>
-        <p>${b.detail}</p>
+        <details><summary>地址、电话与预订详情</summary><p>${b.detail}</p>
         <p>📍 ${place(b.address)}</p>
         <p>☎ <a href="tel:${b.phone.replace(/[^+\d]/g,'')}">${b.phone}</a></p>
-      </article>`).join('');
+        </details>
+      </li>`).join('');
 
     const days = [
       { date:'9月11日 · 周五', title:'飞抵安克雷奇 · 主采购', sleep:'宿：租车公司场地内房车', color:'#d95e4b', stops:['Mexico City International Airport Terminal 1','Dallas Fort Worth International Airport','Ted Stevens Anchorage International Airport','Walmart Supercenter 8900 Old Seward Hwy Anchorage','Great Alaskan Holidays'], events:[
         ['07:00','CST · UTC−6','AA1374 起飞','墨西哥城 T1 → 达拉斯；11:01 CDT 抵达。'],
         ['15:15','CDT · UTC−5','AA399 起飞','达拉斯 → 安克雷奇；19:13 AKDT 抵达。'],
-        ['约20:05–21:05','AKDT · UTC−8',`${place('Walmart 主采购','8900 Old Seward Hwy, Anchorage, AK 99515')}`,'机场打车约14分钟；每天06:00–23:00。先买饮用水、早餐、路餐及体积大的房车用品，行李全程随身。若20:45仍未离开机场，只买必需品。'],
+        ['约20:05–21:05','AKDT · UTC−8',`${place('Walmart 主采购','8900 Old Seward Hwy, Anchorage, AK 99515')}`,'机场打车约14分钟；每天06:00–23:00。先买2–3天饮用水、早餐、路餐和必要用品，行李全程随身。若20:45仍未离开机场，只买必需品。'],
         ['约21:10','AKDT · UTC−8',`前往 ${place('Great Alaskan Holidays','9800 Old Seward Hwy, Anchorage, AK 99515')}`,'Walmart 到租车公司约0.7英里、驾车约2分钟；找到邮件注明的车辆和钥匙，当晚只住宿，不开车。']
       ], risk:'必须提前收到夜间进场和钥匙位置邮件；如果出发前仍未收到，立即联系租车公司。若航班延误或两人已经很疲劳，11日晚只买水和早餐，安全优先。'},
-      { date:'9月12日 · 周六', title:'取车 · 亚洲食材补购 · 帕尔默冰川', sleep:'宿：Palmer / Anchorage North KOA（已确认）', color:'#dd5b48', stops:['Great Alaskan Holidays','New Sagaya Midtown Market Anchorage','Outbound Heli Adventures','Palmer / Anchorage North KOA Journey'], events:[
+      { date:'9月12日 · 周六', title:'取车 · 亚洲食材补购 · 帕尔默冰川', sleep:'宿：Palmer / Anchorage North KOA（已确认）', color:'#dd5b48', stops:['Great Alaskan Holidays','Oriental Shopping Center 408 E Fireweed Ln Anchorage','Outbound Heli Adventures','Palmer / Anchorage North KOA Journey'], events:[
         ['07:15','AKDT · UTC−8','房车讲解与取车','讲解约45分钟，完成文件后才能驾驶。'],
-        ['约08:15–09:00','AKDT · UTC−8',`${place('New Sagaya Midtown 补购','3700 Old Seward Hwy, Anchorage, AK 99503')}`,'从租车公司约9分钟；公开营业时间07:00–21:00。只买亚洲调料、蔬菜和鲜食，控制在30–40分钟。'],
-        ['最晚09:15','AKDT · UTC−8',`离店驶往 ${place('Outbound Heli','3901 S Lindsey Cir F, Palmer, AK 99645')}`,'从 New Sagaya 约56分钟；首次驾驶房车按75分钟预留，目标10:30前到 Palmer，绝不晚于11:30集合。'],
+        ['09:00–09:30','AKDT · UTC−8',`${place('东方超市 Oriental Shopping Center','408 E Fireweed Ln, Anchorage, AK 99503')}`,'周六公开营业时间09:00–17:00；以韩式及亚洲食材为主。08:30前完成取车才考虑此站；先确认25 ft房车短停，采购限30分钟。'],
+        ['最晚09:30','AKDT · UTC−8',`离店驶往 ${place('Outbound Heli','3901 S Lindsey Cir F, Palmer, AK 99645')}`,'地图当前约51分钟、44.1英里；房车按90分钟预留，目标11:00抵达、11:30前完成报到。停车不顺利或开门延迟就跳过采购。'],
         ['12:00','AKDT · UTC−8',`${place('Outbound Heli','3901 S Lindsey Cir F, Palmer, AK 99645')} · 冰川桨板 + Glacier Trekking`,'订单为6小时；闭趾鞋、分层防水衣物。', '需确认/尾款'],
         ['18:00–19:00','AKDT · UTC−8','返场缓冲并前往营地','19:00不是订单结束时间，而是为天气、直升机调度和换装预留。'],
         ['约19:15–20:00','AKDT · UTC−8',`${place('Palmer KOA 晚到入住','2010 S Church St, Palmer, AK 99645')}`,'营地已记录预计19:00–21:00抵达；到场查看夜间登记箱。营位有30A电源和水，无下水接口。']
-      ], risk:'09:15是采购硬截止：如果房车交接到08:45仍未完成，直接取消 New Sagaya，驶往 Palmer。不要为了购物压缩冰川活动的报到缓冲。'},
+      ], risk:'东方超市11日周五19:00关门，晚于你们落地前已打烊；安排12日开门后快买。取车超过08:30或停车未落实就取消，已有Walmart基础补给，15日还有MiMi。'},
       { date:'9月13日 · 周日', title:'Palmer 补给 · Talkeetna · 抵达 Denali', sleep:'宿：Riley Creek Campground', color:'#e6a62d', stops:['Palmer / Anchorage North KOA Journey','Fred Meyer Palmer','Talkeetna Alaska','Riley Creek Mercantile'], events:[
         ['08:30','AKDT · UTC−8','离开 Palmer KOA','先检查油量和饮水。'],
         ['约08:40–09:20','AKDT · UTC−8',`${place('Fred Meyer 查漏补缺','535 E Palmer-Wasilla Hwy, Palmer, AK 99645')}`,'中大型综合超市，每天06:00–22:00；适合买生鲜、饮料和遗漏用品。备选 Carrs：664 E Palmer-Wasilla Hwy，每天05:00–24:00。'],
@@ -312,22 +321,24 @@
         ['约14:10–17:10','AKDT · UTC−8',`${place('Savage Alpine Trail','Savage Alpine Trail, Denali National Park')}`,'仅在无雨、低风、能见度好且体力充足时，从 Savage River 走到 Mountain Vista。约4英里、3小时、最大坡度约25%。', '天气允许才走'],
         ['17:40目标','AKDT · UTC−8',`${place('Mountain Vista','Mountain Vista Rest Area, Denali National Park')} 搭免费巴士`,'目标搭17:40班；错过可等18:10、18:40等后续班。官方表中 Mountain Vista 最后一班约19:40。']
       ], risk:'这不是在 Savage Campground 下车后走回去：正确路线是 Savage River → Mountain Vista。East Fork 巴士到站时间会因动物和路况变化；返程巴士不保证立即有座。若下雨、风大、能见度差或14:15仍未开始，取消徒步，继续坐原车回 Bus Depot；雨天改为9月15日免费观景巴士。'},
-      { date:'9月15日 · 周二', title:'Denali → North Pole', sleep:'宿：Fairbanks / Chena River KOA', color:'#627acb', stops:['Riley Creek Campground','Santa Claus House North Pole','Fairbanks Chena River KOA Journey'], events:[
-        ['08:20','AKDT · UTC−8','雨天备选：Savage River Shuttle','仅在前一天取消徒步时执行；纯乘车往返约2小时。'],
-        ['11:00前','AKDT · UTC−8','退营并驶往 North Pole','若搭免费巴士，需提前收营，回来立即离开。'],
-        ['14:00','AKDT · UTC−8',`${place('Santa Claus House','101 St Nicholas Dr, North Pole, AK 99705')}`,'9月14日起每日10:00–18:00；驯鹿项目已于9月13日结束。'],
-        ['16:30','AKDT · UTC−8',`${place('Fairbanks KOA 入住','1368 Old Badger Rd, North Pole, AK 99705')}`,'25 ft pull-through、full hookups。'],
+      { date:'9月15日 · 周二', title:'Denali → Fairbanks · MiMi补给', sleep:'宿：Ice Art（改期待回复）', color:'#627acb', stops:['Riley Creek Campground','MiMi Asian Mart 250 3rd St Fairbanks','Ice Art RV Park & Campground'], events:[
+        ['08:20','AKDT · UTC−8','雨天备选：Savage River Shuttle','仅前一天取消徒步时执行；纯乘车往返约2小时，提前收营。'],
+        ['11:00前','AKDT · UTC−8','退营驶往 Fairbanks','房车含途中休息暂按3.5–4小时预留；先到Fairbanks，North Pole安排次日。'],
+        ['约15:00–15:45','AKDT · UTC−8',`${place('MiMi Asian Mart 补给','250 3rd St STE4, Fairbanks, AK 99701')}`,'周二公开营业时间10:00–20:00。补后半程生鲜、面条、调料及亚洲食品；位于Gavora Mall，25 ft停车位置需店方确认。'],
+        ['约16:15','AKDT · UTC−8',`${place('Ice Art RV Park','3574 Phillips Field Rd, Fairbanks, AK 99709')}`,'仅在收到改期成功回复后入住；目前9月15日晚营位未确认。', '改期待回复'],
         ['22:00后','AKDT · UTC−8','按云量决定是否看极光','只在精神状态良好、道路安全时短距离观测。']
-      ], risk:'最早班免费巴士加上11:00退营时间很紧，只适合乘车观景，不适合完成 Savage Alpine 徒步。'},
-      { date:'9月16日 · 周三', title:'Fairbanks文化 · Chena温泉', sleep:'宿：Ice Art RV Park', color:'#25a07f', stops:['Fairbanks Chena River KOA Journey','Morris Thompson Cultural and Visitors Center','Chena Hot Springs Resort','Ice Art RV Park & Campground'], events:[
-        ['08:30','AKDT · UTC−8',`${place('Morris Thompson Center','101 Dunkel St, Fairbanks, AK 99701')}`,'免费，9月每日08:00–17:00；看展并领取公路信息。'],
-        ['10:30','AKDT · UTC−8','Fairbanks午餐与补给','把晚间食物一起买好。'],
-        ['12:00','AKDT · UTC−8','驶往 Chena Hot Springs','单程约1小时15分，山路留缓冲。'],
-        ['14:00','AKDT · UTC−8',`${place('Aurora Ice Museum','17600 Chena Hot Springs Rd, Fairbanks, AK 99712')}`,'45分钟，需选场次并提前15分钟集合。', '提前订票'],
-        ['15:30','AKDT · UTC−8','温泉或园区自由活动','根据疲劳程度决定停留。'],
-        ['18:30','AKDT · UTC−8',`返回 ${place('Ice Art RV Park','3574 Phillips Field Rd, Fairbanks, AK 99709')}`,'避免深夜走 Chena Hot Springs Road。']
-      ], risk:'Chena 往返约2.5小时驾驶；冰雕馆全年开放不等于随到随进，必须预约具体场次。'},
-      { date:'9月17日 · 周四', title:'Fairbanks → Anchorage', sleep:'宿：Ship Creek（待确认）', color:'#9a66bf', stops:['Ice Art RV Park & Campground','Nenana Alaska','Denali Viewpoint South','Ship Creek RV Park'], events:[
+      ], risk:'KOA已改至16日；Ice Art申请15日尚未获回复，不能把15日晚当成已落实。若MiMi停车不合适，当天改大型超市补基础食材，不在窄场地强行掉头。'},
+      { date:'9月16日 · 周三', title:'North Pole · Chena温泉', sleep:'宿：Fairbanks / Chena River KOA（已改期）', color:'#25a07f', stops:['Ice Art RV Park & Campground','Morris Thompson Cultural and Visitors Center','Santa Claus House North Pole','Chena Hot Springs Resort','Fairbanks Chena River KOA Journey'], events:[
+        ['08:30–09:15','AKDT · UTC−8',`${place('Morris Thompson Center','101 Dunkel St, Fairbanks, AK 99701')}`,'免费，9月每日08:00–17:00；先看展，随后收营退房。'],
+        ['10:00–10:45','AKDT · UTC−8',`${place('Santa Claus House','101 St Nicholas Dr, North Pole, AK 99705')}`,'9月14日起每日10:00–18:00；驯鹿项目9月13日结束。当天驻车后再按现场指示选位。'],
+        ['10:45–11:00','AKDT · UTC−8','带好路餐，出发去Chena','不等待KOA提前入住；去程按最多2小时预留，房车驾驶按道路和天气调整。'],
+        ['约13:00','AKDT · UTC−8',`${place('Chena Hot Springs Resort','17600 Chena Hot Springs Rd, Fairbanks, AK 99712')}`,'到场向工作人员问日间房车停车区，预留停车、午餐和报到时间。'],
+        ['14:00','AKDT · UTC−8',`${place('Aurora Ice Museum','17600 Chena Hot Springs Rd, Fairbanks, AK 99712')}`,'目标场次，尚需预约；提前15分钟集合。', '提前订票'],
+        ['15:00–16:30','AKDT · UTC−8','温泉与换装','留足换衣和休息时间；疲劳就缩短停留。'],
+        ['16:45出发','AKDT · UTC−8',`返回 ${place('Fairbanks / Chena River KOA','1368 Old Badger Rd, North Pole, AK 99705')}`,'返程预留1.5–2小时，目标18:15–18:45到营地；提前问晚到登记方式。']
+      ], risk:'Chena通常可开房车去，具体短停区待度假村确认。9月16日已过官方营地季与供水排污服务截止日9月15日；本日仅日游。往返预留3–4小时驾驶，出发前查看Alaska 511与天气。'}
+,
+      { date:'9月17日 · 周四', title:'Fairbanks → Anchorage', sleep:'宿：Ship Creek（待确认）', color:'#9a66bf', stops:['Fairbanks Chena River KOA Journey','Nenana Alaska','Denali Viewpoint South','Ship Creek RV Park'], events:[
         ['08:00','AKDT · UTC−8','离开 Fairbanks','这是全程最长驾驶日，尽量不要拖到11:00才出发。'],
         ['09:15','AKDT · UTC−8',`${place('Nenana 短休息','Nenana, Alaska')}`,'伸展、加油或咖啡。'],
         ['12:00','AKDT · UTC−8','沿 Parks Highway 午餐','选择方便房车进出的停车点。'],
