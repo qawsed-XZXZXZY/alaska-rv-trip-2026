@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0d5b54">
-  <meta name="description" content="2026 年 9 月，两个人的阿拉斯加房车旅行手册。">
-  <title>阿拉斯加 · 9日房车旅行手册</title>
+  <meta name="description" content="两个人的阿拉斯加圣诞冬季旅行手册。">
+  <title>阿拉斯加 · 圣诞冬季旅行手册</title>
   <style>
     :root {
       color-scheme: light;
@@ -82,10 +82,34 @@
     .place-dot { fill: var(--paper); stroke: var(--ink); stroke-width: 3; }
     .night-dot { fill: var(--gold); stroke: var(--ink); stroke-width: 3; }
     .map-label { fill: var(--ink); font-size: 16px; font-weight: 900; paint-order: stroke; stroke: var(--paper); stroke-width: 5px; stroke-linejoin: round; }
+    .overview-map .map-label { font-size: 12px; font-weight: 750; stroke-width: 3px; }
+    .map-carousel {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      align-items: flex-start;
+      margin-top: 28px;
+      padding-bottom: 12px;
+    }
+    .map-carousel > section {
+      flex: 0 0 100%;
+      min-width: 0;
+      margin: 0;
+      scroll-snap-align: start;
+    }
+    .map-carousel #map svg[role="group"] { min-width: 0 !important; }
+    .map-destination { cursor: pointer; }
+    .map-destination text { pointer-events: bounding-box; }
+    .map-destination:focus-visible text { text-decoration: underline; }
+    .map-link-fallback { padding: 8px 4px; }
+    .map-link-fallback summary { cursor: pointer; color: var(--brand); }
+    .map-link-fallback li a { display: inline-block; padding-block: 5px; }
     .map-sub { fill: var(--muted); font-size: 12px; font-weight: 800; paint-order: stroke; stroke: var(--paper); stroke-width: 4px; }
     .legend { display: flex; flex-wrap: wrap; gap: 8px 14px; padding: 8px 5px 4px; }
     .legend span { display: inline-flex; align-items: center; gap: 6px; font-size: .78rem; color: var(--muted); font-weight: 800; }
     .legend i { width: 22px; height: 5px; border-radius: 5px; background: var(--c); }
+    .overview-map .legend svg { width: 19px; height: 19px; min-height: 0; flex: none; }
     .booking-grid { margin:0; padding:0 18px; list-style:none; }
     .booking + .booking { border-top:1px solid var(--line); }
     .booking details summary { cursor:pointer; color:var(--muted); font-size:.82rem; }
@@ -160,8 +184,8 @@
 <body>
   <main class="shell">
     <div class="topline">
-      <div class="trip-title">ALASKA · 2026</div>
-      <div class="trip-meta">9月11日—19日 · 2人</div>
+      <div class="trip-title">阿拉斯加 · 圣诞冬季旅行</div>
+      <div class="trip-meta">2026/12/24–2027/1/1 · 2人</div>
     </div>
 
     <section class="card focus-card" id="focus" aria-live="polite">
@@ -174,40 +198,131 @@
         <div class="count-unit"><b id="cd-minute">--</b><span>分</span></div>
         <div class="count-unit"><b id="cd-second">--</b><span>秒</span></div>
       </div>
-      <p class="timezone-note">倒计时使用事件的绝对时间计算，不受打开网页所在时区影响。阿拉斯加行程均为 AKDT（UTC−8）。</p>
+      <p class="timezone-note">倒计时使用事件的绝对时间计算，不受打开网页所在时区影响。阿拉斯加行程均为 AKST（UTC−9）。</p>
     </section>
 
     <nav aria-label="页面导航">
-      <a href="#map">总览地图</a><a href="#days">逐日行程</a><a href="#bookings">预订列表</a><a href="#todo">待办</a><a href="#tips">实用贴士</a>
+      <a href="#map">费尔班克斯地图</a><a href="#anchorage-map">安克雷奇地图</a><a href="#days">逐日行程</a><a href="#bookings">预订列表</a><a href="#todo">待办</a><a href="#aurora">极光点位</a><a href="#tips">实用贴士</a>
     </nav>
 
+    <p class="privacy">左右滑动切换费尔班克斯和安克雷奇地图。</p>
+    <div class="map-carousel" tabindex="0" aria-label="城市地图，左右滑动切换">
     <section id="map">
-      <div class="section-head"><h2>行程总览地图</h2><p>彩色虚线按天标记 · 金色为住宿</p></div>
+      <div class="section-head"><h2>费尔班克斯周边路线图</h2><p>北向上 · 市界简化 · 路线为示意</p></div>
       <div class="card overview-map">
-        <svg viewBox="0 0 900 520" role="img" aria-label="安克雷奇、帕尔默、塔尔基特纳、德纳里、北极和费尔班克斯房车路线示意图">
-          <path class="map-land" d="M114 437 C84 370 91 286 134 226 C173 172 225 139 302 119 C359 104 392 77 458 74 C514 71 567 94 608 133 C660 183 722 201 769 258 C815 315 822 389 780 437 C735 486 651 480 581 465 C509 450 438 484 367 476 C287 467 196 484 114 437Z"/>
-          <path class="route" stroke="#dd5b48" d="M180 407 Q217 367 247 344"/>
-          <path class="route" stroke="#e6a62d" d="M247 344 Q341 274 416 232 Q474 190 518 158"/>
-          <path class="route" stroke="#627acb" d="M518 158 Q552 103 622 95"/>
-          <path class="route" stroke="#25a07f" d="M622 95 Q665 78 711 94 Q690 130 658 151"/>
-          <path class="route" stroke="#9a66bf" d="M658 151 Q505 228 397 293 Q278 365 180 407"/>
-          <circle class="place-dot" cx="180" cy="407" r="10"/><circle class="night-dot" cx="247" cy="344" r="10"/>
-          <circle class="place-dot" cx="416" cy="232" r="9"/><circle class="night-dot" cx="518" cy="158" r="10"/>
-          <circle class="night-dot" cx="622" cy="95" r="10"/><circle class="place-dot" cx="711" cy="94" r="9"/>
-          <circle class="night-dot" cx="658" cy="151" r="10"/>
-          <text class="map-label" x="112" y="432">Anchorage</text><text class="map-sub" x="111" y="452">9/11、9/17</text>
-          <text class="map-label" x="260" y="350">Palmer</text><text class="map-sub" x="260" y="369">9/12</text>
-          <text class="map-label" x="345" y="221">Talkeetna</text>
-          <text class="map-label" x="452" y="147">Denali</text><text class="map-sub" x="452" y="168">9/13—15</text>
-          <text class="map-label" x="538" y="79">North Pole</text><text class="map-sub" x="538" y="101">9/16</text>
-          <text class="map-label" x="718" y="83">Chena</text>
-          <text class="map-label" x="669" y="174">Fairbanks</text><text class="map-sub" x="669" y="194">9/15（改期待回复）</text>
-        </svg>
-        <div class="legend">
-          <span><i style="--c:#dd5b48"></i>9/12</span><span><i style="--c:#e6a62d"></i>9/13</span><span><i style="--c:#627acb"></i>9/15</span><span><i style="--c:#25a07f"></i>9/16</span><span><i style="--c:#9a66bf"></i>9/17</span>
+        <div>
+          <svg style="min-width:680px;min-height:0" viewBox="0 0 900 500" role="group" aria-label="费尔班克斯及 North Pole 周边自驾路线">
+            <path class="map-land" d="M20 190 Q48 98 120 85 Q220 54 329 97 Q443 26 564 62 Q658 74 688 53 Q805 30 877 87 L880 447 Q709 475 636 461 Q491 478 402 453 Q214 494 48 426 Z"/>
+            <g fill="var(--brand)" fill-opacity=".09" stroke="var(--brand)" stroke-opacity=".65" stroke-width="1.4" stroke-dasharray="4 3">
+              <path aria-label="North Pole 市界" d="M541.6 395.7 L560.7 395.7 L560.7 400.0 L565.5 400.0 L565.5 404.4 L579.9 404.4 L579.9 408.7 L590.2 408.8 L588.2 414.3 L589.5 421.0 L608.6 435.2 L608.6 443.4 L592.8 443.5 L596.3 447.7 L589.5 447.7 L589.5 452.0 L577.6 447.7 L570.4 441.6 L570.3 419.6 L567.9 419.6 L567.9 413.8 L570.3 414.0 L546.1 403.3 L546.1 400.0 L541.6 400.0 L541.6 395.7 Z"/>
+              <path aria-label="Fairbanks 市界" d="M318.9 325.2 L323.7 323.8 L323.6 317.2 L330.2 321.9 L332.2 319.9 L330.4 315.7 L331.9 313.2 L342.4 313.4 L342.8 306.3 L340.1 304.9 L340.9 300.7 L344.5 298.3 L345.8 291.3 L358.3 293.5 L357.2 296.4 L362.1 294.7 L362.0 291.8 L410.0 291.8 L410.0 283.2 L414.7 283.2 L414.8 278.8 L419.5 278.8 L419.5 283.2 L457.9 283.2 L457.9 274.5 L486.7 274.5 L485.2 304.9 L480.4 304.9 L480.4 309.2 L466.1 309.2 L466.1 326.5 L475.6 326.5 L475.7 343.8 L463.4 341.2 L461.4 343.9 L459.4 354.9 L456.6 357.0 L456.7 392.5 L439.7 392.1 L433.0 383.5 L416.7 378.6 L415.8 374.1 L405.3 375.7 L404.1 348.1 L390.7 348.1 L390.9 361.0 L381.3 361.0 L381.2 352.4 L342.9 352.4 L342.9 335.1 L333.3 335.1 L333.3 330.8 L323.7 330.8 L323.7 327.2 L318.9 325.2 Z"/>
+            </g>
+            <text x="451" y="251" text-anchor="middle" fill="var(--ink)" opacity=".075" font-size="58" font-weight="800" letter-spacing="12" aria-hidden="true">费尔班克斯</text>
+            <g fill="none" stroke="var(--line)" stroke-width="3" stroke-linecap="round">
+              <path d="M39 143l27-37 24 39m-39-14 15-9 11 8 M765 105l22-32 22 30m-34-12 12-7 11 8 M110 259l28-42 27 39m-40-12 13-9 11 9"/>
+              <path d="M24 326 Q135 308 185 358 T350 353 T504 347 Q623 325 659 287 T844 249" stroke="#71a9c5" stroke-width="5" opacity=".6"/>
+            </g>
+            <g fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity=".88">
+              <path d="M376 328 C401 337 436 316 407 307 S296 240 260 256 S268 302 230 311 S153 316 114 354" stroke="#1d9e80"/>
+              <path d="M376 328 C399 194 458 163 555 191 S741 208 836 119" stroke="#d46b39"/>
+              <path d="M555 191 C469 263 522 400 585 428 C608 441 642 407 612 388 C549 345 391 371 268 330" stroke="#4d76ce"/>
+            </g>
+            <g class="map-label">
+              <text x="544" y="466">North Pole</text>
+              <text x="628" y="126">Chena Hot Springs Rd</text><text x="431" y="409">Richardson Hwy</text>
+              <text x="429" y="319" style="font-size:10px;opacity:.8">市中心</text>
+              <text x="847" y="57">↑ 北</text>
+            </g>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Fairbanks%20International%20Airport&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="费尔班克斯机场 · Alamo"><title>费尔班克斯机场 · Alamo</title><g transform="translate(275 381)" stroke="#667980" stroke-width="1.65" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="11" fill="var(--paper)" stroke="none"/><path d="m2 8 5 1 3-7h2l-1 8 6 3v2l-6-1v3l2 2v1l-4-1-4 1v-1l2-2v-3l-5-3z"/></g><text x="171" y="407" class="map-label">机场 · Alamo</text><circle cx="285" cy="391" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=1909%20Airport%20Way%2C%20Fairbanks&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="Comfort Inn"><title>Comfort Inn</title><g transform="translate(366 318)" stroke="#e3a23d" stroke-width="1.65" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="11" fill="var(--paper)" stroke="none"/><path d="M2 5v13m16-6v6M2 15h16v-3a3 3 0 0 0-3-3H8v6"/><circle cx="5" cy="9" r="1.4"/></g><text x="387" y="345" class="map-label">Comfort Inn</text><circle cx="376" cy="328" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=4580%20Old%20Airport%20Rd%2C%20Fairbanks&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="Aspen Suites"><title>Aspen Suites</title><g transform="translate(258 320)" stroke="#e3a23d" stroke-width="1.65" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="11" fill="var(--paper)" stroke="none"/><path d="M2 5v13m16-6v6M2 15h16v-3a3 3 0 0 0-3-3H8v6"/><circle cx="5" cy="9" r="1.4"/></g><text x="189" y="361" class="map-label">Aspen Suites</text><circle cx="268" cy="330" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=4630%20Old%20Airport%20Rd%2C%20Fairbanks&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="Great Alaskan Bowl Company"><title>Great Alaskan Bowl Company</title><circle cx="230" cy="311" r="6" fill="#1d9e80" stroke="var(--paper)" stroke-width="2"/><text x="133" y="303" class="map-label">木碗店</text><circle cx="230" cy="311" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=796%20Chena%20Pump%20Rd%2C%20Fairbanks&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="The Pump House"><title>The Pump House</title><circle cx="114" cy="354" r="6" fill="#1d9e80" stroke="var(--paper)" stroke-width="2"/><text x="32" y="379" class="map-label">Pump House</text><g transform="translate(14 365)" fill="none" stroke="#a04d61" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="var(--paper)" stroke="none"/><path d="M4 3v7m3-7v14m3-14v7M4 8q3 5 6 0m6-5v14m0-14q-4 4-3 8h3"/></g><circle cx="114" cy="354" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=7035%20Chena%20Hot%20Springs%20Rd%2C%20Fairbanks&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="Arctic Igloo Resort 玻璃屋"><title>Arctic Igloo Resort 玻璃屋</title><g transform="translate(545 181)" stroke="#e3a23d" stroke-width="1.65" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="11" fill="var(--paper)" stroke="none"/><path d="M2 5v13m16-6v6M2 15h16v-3a3 3 0 0 0-3-3H8v6"/><circle cx="5" cy="9" r="1.4"/></g><text x="493" y="158" class="map-label">Arctic Igloo 玻璃屋</text><circle cx="555" cy="191" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=625%20Two%20Rivers%20Rd%2C%20Fairbanks%2C%20AK%2099712&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="Midnight Sun 雪地摩托"><title>Midnight Sun 雪地摩托</title><g transform="translate(680 159) scale(.85)" fill="var(--paper)" stroke="#467fa4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-7-8-7-13a7 7 0 1 1 14 0c0 5-7 13-7 13Z"/><circle cx="12" cy="9" r="2.5"/></g><text x="651" y="194" class="map-label">Midnight Sun 雪地摩托</text><circle cx="690" cy="169" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=17600%20Chena%20Hot%20Springs%20Rd%2C%20Fairbanks&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="珍娜温泉 / Aurora Ice Museum"><title>珍娜温泉 / Aurora Ice Museum</title><circle cx="836" cy="119" r="6" fill="#d46b39" stroke="var(--paper)" stroke-width="2"/><text x="703" y="102" class="map-label">珍娜温泉 · 冰雕馆</text><g transform="translate(785 110) scale(.85)" fill="var(--paper)" stroke="#d46b39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15c3 0 3 2 6 2s3-2 6-2 3 2 6 2M6 12c-4-4 4-5 1-10m5 10c-4-4 4-5 1-10m5 10c-4-4 4-5 1-10"/></g><g transform="translate(809 108) scale(.85)" fill="var(--paper)" stroke="#467fa4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 19 8 17 18 12 22 7 18 5 8Z M5 8h14M12 2l-3 6 3 14 3-14Z"/></g><circle cx="836" cy="119" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Santa%20Claus%20House%20North%20Pole%20Alaska&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="Santa Claus House"><title>Santa Claus House</title><circle cx="585" cy="428" r="6" fill="#4d76ce" stroke="var(--paper)" stroke-width="2"/><text x="455" y="448" class="map-label">Santa Claus House</text><circle cx="585" cy="428" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=1983%20Tunnels%20Rd%2C%20North%20Pole%2C%20AK%2099705&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="Firewalker Kennel 狗拉雪橇"><title>Firewalker Kennel 狗拉雪橇</title><circle cx="612" cy="388" r="6" fill="#4d76ce" stroke="var(--paper)" stroke-width="2"/><text x="626" y="386" class="map-label">Firewalker 雪橇</text><circle cx="612" cy="388" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=3780%20Laurance%20Rd%2C%20North%20Pole%2C%20AK%2099705&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="珍娜湖 · 冰钓"><title>珍娜湖 · 冰钓</title><g transform="translate(725 417) scale(.85)" fill="var(--paper)" stroke="#467fa4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-7-8-7-13a7 7 0 1 1 14 0c0 5-7 13-7 13Z"/><circle cx="12" cy="9" r="2.5"/></g><text x="753" y="434" class="map-label">珍娜湖冰钓</text><circle cx="735" cy="427" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Murphy%20Dome%20Fairbanks%20Alaska&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="Murphy Dome"><title>Murphy Dome</title><g transform="translate(94 99) scale(.85)" fill="var(--paper)" stroke="#9669cb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12c3-9 6 1 9-5s6 0 9-5M2 17c4-8 7 1 11-5s5-1 7-4"/><path d="M14 2v4m-2-2h4"/></g><text x="119" y="117" class="map-label">Murphy Dome</text><circle cx="104" cy="109" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Cleary%20Summit%20Alaska&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="Cleary Summit"><title>Cleary Summit</title><g transform="translate(429 52) scale(.85)" fill="var(--paper)" stroke="#9669cb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12c3-9 6 1 9-5s6 0 9-5M2 17c4-8 7 1 11-5s5-1 7-4"/><path d="M14 2v4m-2-2h4"/></g><text x="452" y="65" class="map-label">Cleary Summit</text><circle cx="439" cy="62" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="#aurora" aria-label="Aurora Glass House（Cleary Summit 室内团）"><title>Aurora Glass House（Cleary Summit 室内团）</title><g transform="translate(465 82) scale(.85)" fill="var(--paper)" stroke="#9669cb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12c3-9 6 1 9-5s6 0 9-5M2 17c4-8 7 1 11-5s5-1 7-4"/><path d="M14 2v4m-2-2h4"/></g><text x="490" y="100" class="map-label">Aurora Glass House</text></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=101%20Dunkel%20St%2C%20Fairbanks%2C%20AK%2099701&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination"><title>Morris Thompson</title><circle cx="407" cy="307" r="6" fill="#1d9e80"/><text x="424" y="294" class="map-label">Morris Thompson</text><circle cx="407" cy="307" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=1962%20Yukon%20Dr%2C%20Fairbanks%2C%20AK%2099775&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination"><title>Museum of the North</title><g transform="translate(250 246)" stroke="#1d9e80" stroke-width="1.65" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="11" fill="var(--paper)" stroke="none"/><path d="M2 8 10 3l8 5ZM4 9v7m4-7v7m4-7v7m4-7v7M2 18h16"/></g><text x="235" y="235" class="map-label">Museum of the North</text><circle cx="260" cy="256" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=523%202nd%20Ave%2C%20Fairbanks%2C%20AK%2099701&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="The Crepery"><title>The Crepery</title><g transform="translate(391 226)" fill="none" stroke="#a04d61" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="var(--paper)" stroke="none"/><path d="M4 3v7m3-7v14m3-14v7M4 8q3 5 6 0m6-5v14m0-14q-4 4-3 8h3"/></g><text x="412" y="240" class="map-label">The Crepery</text><circle cx="401" cy="236" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=570%20Funk%20Rd%2C%20Fairbanks%2C%20AK%2099712&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="Aurora Pointe"><title>Aurora Pointe</title><g transform="translate(446 158)" fill="none" stroke="#9669cb" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="var(--paper)" stroke="none"/><path d="M2 12c3-8 6 1 9-5s5-1 7-4M2 17c4-8 7 1 11-5s4-1 6-4"/></g><text x="467" y="172" class="map-label">Aurora Pointe</text><circle cx="456" cy="168" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=3355%20Repp%20Rd%2C%20North%20Pole%2C%20AK%2099705&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="Rod’s 雪地摩托"><title>Rod’s 雪地摩托</title><g transform="translate(644 350)" fill="none" stroke="#467fa4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="var(--paper)" stroke="none"/><path d="M10 19s-6-7-6-11a6 6 0 0 1 12 0c0 4-6 11-6 11Z"/><circle cx="10" cy="8" r="2"/></g><text x="665" y="364" class="map-label">Rod’s 雪地摩托</text><circle cx="654" cy="360" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+          </svg>
+          <details class="map-link-fallback">
+            <summary>地点导航链接</summary>
+            <ul>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Fairbanks%20International%20Airport&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">费尔班克斯机场 · Alamo</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=1909%20Airport%20Way%2C%20Fairbanks&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">Comfort Inn</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=4580%20Old%20Airport%20Rd%2C%20Fairbanks&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">Aspen Suites</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=4630%20Old%20Airport%20Rd%2C%20Fairbanks&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">Great Alaskan Bowl Company</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=796%20Chena%20Pump%20Rd%2C%20Fairbanks&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">The Pump House</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=7035%20Chena%20Hot%20Springs%20Rd%2C%20Fairbanks&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">Arctic Igloo Resort 玻璃屋</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=625%20Two%20Rivers%20Rd%2C%20Fairbanks%2C%20AK%2099712&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">Midnight Sun 雪地摩托</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=17600%20Chena%20Hot%20Springs%20Rd%2C%20Fairbanks&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">珍娜温泉 / Aurora Ice Museum</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Santa%20Claus%20House%20North%20Pole%20Alaska&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">Santa Claus House</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=1983%20Tunnels%20Rd%2C%20North%20Pole%2C%20AK%2099705&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">Firewalker Kennel 狗拉雪橇</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=3780%20Laurance%20Rd%2C%20North%20Pole%2C%20AK%2099705&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">珍娜湖 · 冰钓</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Murphy%20Dome%20Fairbanks%20Alaska&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">Murphy Dome</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Cleary%20Summit%20Alaska&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">Cleary Summit</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=101%20Dunkel%20St%2C%20Fairbanks%2C%20AK%2099701&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">Morris Thompson</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=1962%20Yukon%20Dr%2C%20Fairbanks%2C%20AK%2099775&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">Museum of the North</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=523%202nd%20Ave%2C%20Fairbanks%2C%20AK%2099701&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">The Crepery</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=570%20Funk%20Rd%2C%20Fairbanks%2C%20AK%2099712&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">Aurora Pointe</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=3355%20Repp%20Rd%2C%20North%20Pole%2C%20AK%2099705&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">Rod’s 雪地摩托</a></li>
+            </ul>
+          </details>
         </div>
+        <div class="legend" aria-label="地图图例"><span><i style="--c:#1d9e80"></i>12/26</span><span><i style="--c:#d46b39"></i>12/27</span><span><i style="--c:#4d76ce"></i>12/28</span><span><svg viewBox="0 0 20 20" fill="none" stroke="#b57315" stroke-width="1.7" aria-hidden="true"><path d="M2 5v13m16-6v6M2 15h16v-3a3 3 0 0 0-3-3H8v6"/><circle cx="5" cy="9" r="1.4"/></svg>住宿</span><span><i style="--c:var(--brand)"></i>市界</span><span><svg viewBox="0 0 20 20" fill="none" stroke="#a04d61" stroke-width="1.7" aria-hidden="true"><path d="M4 3v7m3-7v14m3-14v7M4 8q3 5 6 0m6-5v14m0-14q-4 4-3 8h3"/></svg>餐厅</span><span><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#9669cb" stroke-width="2" aria-hidden="true"><path d="M2 12c3-9 6 1 9-5s6 0 9-5M2 17c4-8 7 1 11-5s5-1 7-4"/><path d="M14 2v4m-2-2h4"/></svg>极光</span><span><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#467fa4" stroke-width="2" aria-hidden="true"><path d="M12 22s-7-8-7-13a7 7 0 1 1 14 0c0 5-7 13-7 13Z"/><circle cx="12" cy="9" r="2.5"/></svg>备选</span></div>
+        <p>冬季车程为单程预留，未含游览或停车。12/27 市区至温泉：1 小时 45 分–2 小时；温泉回玻璃屋：约 1 小时–1 小时 15 分。12/28 North Pole 回市区：约 25–40 分。边界源自 <a href="https://tigerweb.geo.census.gov/">美国人口普查局 TIGERweb</a>，已简化；地点和路线为示意。出发前查 <a href="https://511.alaska.gov/">Alaska 511</a>。</p>
       </div>
     </section>
+
+    <section id="anchorage-map">
+      <div class="section-head"><h2>安克雷奇小地图</h2><p>北向上 · 相对位置示意</p></div>
+      <div class="card overview-map">
+        <svg viewBox="0 0 560 320" style="min-height:0" role="group" aria-label="安克雷奇机场、Puffin Inn、Wingate 与市中心的位置示意">
+          <path class="map-land" d="M26 275Q58 245 65 215L80 175Q126 165 154 129L195 99Q239 87 271 47L311 24H533V290H26Z"/>
+          <path d="M260 251Q325 237 353 193T408 88" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="5 6"/>
+          <path d="M123 248Q161 223 245 211" fill="none" stroke="#1d9e80" stroke-width="4" stroke-linecap="round"/>
+          <path d="M123 248Q223 275 306 203T408 88" fill="none" stroke="#4d76ce" stroke-width="4" stroke-linecap="round"/>
+          <rect x="326" y="105" width="143" height="59" rx="10" fill="var(--line)" fill-opacity=".22" stroke="var(--line)" stroke-dasharray="4 4"/>
+          <text x="397" y="140" class="map-label" text-anchor="middle">Downtown · 市中心</text>
+          <text x="495" y="55" class="map-label">↑ 北</text>
+          <text x="82" y="134" fill="var(--muted)" font-size="13">Cook Inlet</text>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Ted+Stevens+Anchorage+International+Airport&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="导航至安克雷奇机场">
+            <circle cx="123" cy="248" r="11" fill="#667980"/>
+            <path d="M117 248h12m-6-6v12m-5-7 5 4 5-4" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <text x="52" y="272" class="map-label">ANC 安克雷奇机场</text>
+          <circle cx="123" cy="248" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=4400+Spenard+Rd+Anchorage+AK&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="导航至 Puffin Inn">
+            <circle cx="245" cy="211" r="11" fill="#a56c22"/>
+            <path d="M239 207v9m12-5v5m-12-2h12v-3h-8" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <text x="259" y="212" class="map-label">Puffin Inn · 12/24</text>
+          <circle cx="245" cy="211" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=111+W+Ship+Creek+Ave+Anchorage+AK&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer" class="map-destination" aria-label="导航至 Wingate Downtown Ship Creek">
+            <circle cx="408" cy="88" r="11" fill="#a56c22"/>
+            <path d="M402 84v9m12-5v5m-12-2h12v-3h-8" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <text x="392" y="80" class="map-label" text-anchor="end">Wingate · 12/30</text>
+          <circle cx="408" cy="88" r="13" fill="transparent" pointer-events="all" aria-hidden="true"/></a>
+        </svg>
+          <details class="map-link-fallback">
+            <summary>地点导航链接</summary>
+            <ul>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Ted+Stevens+Anchorage+International+Airport&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer">安克雷奇机场</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=4400+Spenard+Rd+Anchorage+AK&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer"> Puffin Inn</a></li>
+                <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=111+W+Ship+Creek+Ave+Anchorage+AK&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener noreferrer"> Wingate Downtown Ship Creek</a></li>
+            </ul>
+          </details>
+        <div class="legend"><span><i style="--c:#1d9e80"></i>12/24–25 · 机场 ↔ Puffin Inn</span><span><i style="--c:#4d76ce"></i>12/30–31 · 机场 ↔ Wingate</span></div>
+      </div>
+    </section>
+
+    </div>
 
     <section id="days">
       <div class="section-head"><h2>逐日行程</h2><p>点地点直接导航 · 展开查看当日路线</p></div>
@@ -217,41 +332,48 @@
     <section id="bookings">
       <div class="section-head"><h2>预订列表</h2><p>时间一眼可见 · 展开地址与电话</p></div>
       <ul class="card booking-grid" id="booking-grid"></ul>
-      <p class="privacy">阿拉斯加当地时间均为 AKDT（UTC−8）。公开页面不含确认号、证件号及私人资料。</p>
+      <p class="privacy">阿拉斯加当地时间均为 AKST（UTC−9）。公开页面不含确认号、证件号及私人资料。</p>
     </section>
 
     <section id="todo">
-      <div class="section-head"><h2>待办清单</h2><p>完成后告诉我，我会更新公开页面</p></div>
-      <div class="card todo-card">
-        <ul class="plain-list">
-          <li><b>等待 Ice Art 改期至9月15日的确认</b><span>改期申请已发出，尚未回复；15日晚住宿仍未确认。原16日订单在收到改期成功前仍可能有效，需留意与16日KOA重叠。</span></li>
-          <li><b>确认亚洲超市房车短停及 Chena 日间停车</b><span>东方超市 907-277-0107；MiMi 907-880-5288；Chena 907-451-8104。说明25 ft房车，只短停采购或日游，询问推荐入口与停车区域；Chena到访日期为9月16日。</span></li>
-          <li><b>确认 After Hours 到达邮件</b><span>请租车公司确认已记录 AA399 19:13 抵达，并重发房车位置、钥匙与夜间进场说明。</span></li>
-          <li><b>支付冰川活动尾款</b><span>订单现有尾款未付；同时确认活动正式结束时间是 18:00，19:00 仅作为天气和返场缓冲。</span></li>
-          <li><b>提交 9 月 17 日 <a href="https://www.alaskatraveladventures.com/rv-park/reservation-request-anchorage" target="_blank" rel="noreferrer">Ship Creek 预订申请</a></b><span>提交不等于确认。收到营位确认后，再电话核对晚到和车辆尺寸。</span></li>
-          <li><b>预订 9 月 16 日 <a href="https://www.chenahotsprings.com/?p=1891" target="_blank" rel="noreferrer">Aurora Ice Museum</a></b><span>全年开放但需要选择场次；提前 15 分钟到 Activities Center。</span></li>
-          <li><b>确认 9 月 18 日行李寄存</b><span>首选 ANC 机场 Huntleigh USA（行李提取 4 旁，907-248-0373）；先电话确认当天营业时间。若不可用，询问租车公司能否临时保管。</span></li>
-          <li><b>出发前保存两份 Denali 时刻表</b><span>分别保存已订的 East Fork Transit 表，以及 <a href="https://www.nps.gov/dena/planyourvisit/upload/2026-SRS-Public-Schedule-9-8-to-9-20-508.pdf" target="_blank" rel="noreferrer">9月免费 Savage River Shuttle 表</a>；园内基本无手机信号。</span></li>
-        </ul>
+      <div class="section-head"><h2>待办清单</h2></div>
+      <ul class="card plain-list todo-card">
+<li>确认 Alamo 还车日期、时间和地点，以及取车风险提醒。订单列明主驾驶人带驾照及 IDP 原件、护照原件、国际信用卡和提车单。</li>
+<li>确认两位入住者都已完成玻璃屋免责声明。</li>
+<li>核对 12/27 温泉与冰雕博物馆场次，以及 12/28 圣诞老人见面时间和Firewalker 能否安排 13:40 抵达、14:40–14:50 实际开滑。</li>
+<li>确认 Pump House 圣诞周营业并订位（<a href="tel:+19074798452">907-479-8452</a>）。若选珍娜湖冰钓，先核对冰况、钓鱼执照及冰屋或导览场次。<a href="https://fnsb.gov/1034/Your-Facilities">珍娜湖设施</a> · <a href="https://secure.rec1.com/AK/fairbanks-north-star-ak/catalog?filter=bG9jYXRpb25bNDM0MjZdPTE%3D">冰屋预约</a></li>
+<li>确认 Wingate 12/31 退房后寄存行李及最晚取件时间。</li>
+<li>复核 AM3081 / DL925 航变和行李直挂安排。</li></ul>
+    </section>
+
+    <section id="aurora">
+      <div class="section-head"><h2>极光点位</h2><p>按当晚位置、天气和路况选择</p></div>
+      <div class="card tips-card" style="overflow-x:auto">
+        <table style="width:100%;border-spacing:12px;text-align:left">
+          <thead><tr><th scope="col">地点</th><th scope="col">方向</th><th scope="col">到访方式</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Murphy+Dome+Fairbanks+Alaska">Murphy Dome</a></th><td>费尔班克斯西侧</td><td>户外自驾观测。出发前查路况，有安全停车点才停。</td></tr>
+            <tr><th scope="row"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Cleary+Summit+Fairbanks+Alaska">Cleary Summit</a></th><td>费尔班克斯北侧，Steese Highway 沿线</td><td>户外自驾观测，只在安全的停车区停靠。</td></tr>
+            <tr><th scope="row"><a href="https://fairbankstour.com/guides/murphy-dome-cleary-summit-aurora-viewing/">Aurora Glass House</a></th><td>Cleary Summit 一带</td><td>室内玻璃屋观测团。先确认预约和酒店接送。与户外 Cleary Summit 同方向。</td></tr>
+            <tr><th scope="row"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=570%20Funk%20Rd%2C%20Fairbanks%2C%20AK%2099712">Aurora Pointe</a></th><td>570 Funk Rd, Fairbanks</td><td>需预约的观测场地。自行前往或另订接驳。<a href="https://www.aurorapointe.net/reserve">预约</a></td></tr>
+          </tbody>
+        </table>
+        <p><a href="https://www.explorefairbanks.com/explore-the-area/aurora-season/aurora-viewing-locations/">Explore Fairbanks 点位指南</a> · <a href="https://511.alaska.gov/">Alaska 511 路况</a></p>
       </div>
     </section>
 
+    <section id="food">
+      <div class="section-head"><h2>餐厅与活动备选</h2></div>
+      <ul class="card plain-list tips-card">
+        <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=523%202nd%20Ave%2C%20Fairbanks%2C%20AK%2099701">The Crepery</a> · 523 2nd Ave, Fairbanks。甜咸可丽饼，12/26 逛访客中心后可顺路吃午餐。<a href="https://thecrepery.net/">菜单与营业时间</a></li>
+        <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=796%20Chena%20Pump%20Rd%2C%20Fairbanks">The Pump House</a> · 796 Chena Pump Rd, Fairbanks。12/26 晚餐计划。</li>
+        <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=3355%20Repp%20Rd%2C%20North%20Pole%2C%20AK%2099705">Rod’s Alaskan Guide Service</a> · 3355 Repp Rd, North Pole。雪地摩托备选，尚未预订。<a href="https://www.travelalaska.com/north-pole/winter-activities/snowmobiling-tours/rods-alaskan-guide-service">活动介绍</a></li>
+      </ul>
+    </section>
+
     <section id="tips">
-      <div class="section-head"><h2>实用贴士</h2><p>按这辆 22M 房车和 9 月路况准备</p></div>
-      <div class="card tips-card"><div class="tips-grid">
-        <article class="tip"><h3>房车尺寸</h3><p>约 24′5″ 长、11′ 高、8′5.5″ 宽。订营位统一填 25 ft；进停车场、加油站和树下先看限高。</p></article>
-        <article class="tip"><h3>驾驶节奏</h3><p>地图时间至少增加 20% 房车缓冲。9 月 17 日 Fairbanks → Anchorage 是全程最累的一天，按约 8 小时含停车安排。</p></article>
-        <article class="tip"><h3>昼夜与极光</h3><p>网页按 Anchorage 当地时间自动切换配色。看极光先查看云量与 Kp；不要为了追光疲劳驾驶。</p></article>
-        <article class="tip"><h3>衣物</h3><p>冰川活动穿排汗层、保暖层和防水外层，带手套、帽子、墨镜与闭趾鞋；运营方提供干式服与冰爪。</p></article>
-        <article class="tip"><h3>燃油与水箱</h3><p>长途当天半箱油就开始找加油站。还车前加满油、排灰黑水并预留清洁时间，目标 10:45 抵达还车点。</p></article>
-        <article class="tip"><h3>分段采购</h3><p>11日晚 Walmart 先买2–3天基础食品；12日东方超市快速补亚洲食材；13日 Palmer 只补够到15日的生鲜；15日 MiMi 再买后半程食物。留少量常温备用餐，无需一次买足全程。</p></article>
-        <article class="tip"><h3>房车采购停车</h3><p>Walmart、Palmer Fred Meyer / Carrs 按大型商店顾客停车场规划，未取得店方对25 ft房车的明确承诺。MiMi 位于 Gavora Mall，街景可见共享露天停车场；东方超市门前空间较小，先确认再进。选外围空位、不挡通道，停车采购不代表允许过夜。</p></article>
-        <article class="tip"><h3>Chena 房车日游</h3><p>度假村接待房车，通常可沿 Chena Hot Springs Road 自驾；每程预留1.5–2小时。9月16日已超过官方营地、供水与排污服务季（截至9月15日），只安排日游并提前问日间房车停车。当天查看 <a href="https://511.alaska.gov" target="_blank" rel="noreferrer">Alaska 511</a>。</p></article>
-        <article class="tip"><h3>采购与道路来源</h3><p><a href="https://www.google.com/maps/search/?api=1&query=Oriental+Shopping+Center+408+E+Fireweed+Anchorage" target="_blank" rel="noreferrer">东方超市地图</a> · <a href="https://www.google.com/maps/search/?api=1&query=MiMi+Asian+Mart+250+3rd+St+Fairbanks" target="_blank" rel="noreferrer">MiMi 地图与街景</a> · <a href="https://www.chenahotsprings.com/chena-shuttle/" target="_blank" rel="noreferrer">Chena交通</a> · <a href="https://www.chenahotsprings.com/camping-rvs/" target="_blank" rel="noreferrer">Chena房车设施</a>。地图与营业时间核对于2026年9月5日；停车空间判断不等于商家许可。</p></article>
-        <article class="tip"><h3>开放日核对</h3><p>Morris Thompson 9 月每日 08:00–17:00且免费；Chena 冰雕博物馆全年开放但要选场次；Anchorage Museum 9 月每日 10:00–18:00。</p></article>
-        <article class="tip"><h3>离线使用</h3><p>页面本身可离线打开；Google 地图导航仍需要网络。出发前在 Google Maps 下载 Anchorage、Parks Highway、Fairbanks 离线地图。</p></article>
-        <article class="tip"><h3>紧急与通信</h3><p>野外路段信号可能中断。每天出发前把油量、天气、轮胎和目的地地址截图保存；紧急情况拨 911。</p></article>
-      </div></div>
+      <div class="section-head"><h2>实用贴士</h2></div>
+      <ul class="card plain-list tips-card"><li>出发前看 <a href="https://511.alaska.gov/">Alaska 511</a>。极光与粉色晚霞按天气灵活安排。</li><li>圣诞节当天，<a href="https://www.uaf.edu/museum/plan-your-visit/hours/index.php">Museum of the North</a> 与 <a href="https://morristhompsoncenter.org/visitor-info/">Morris Thompson Center</a> 闭馆。</li><li><a href="https://www.santaclaushouse.com/visit.asp">Santa Claus House</a> · <a href="https://www.firewalkerkennel.com/00-090-44.html">Firewalker 联系方式</a>（+1 907-378-3260） · <a href="https://alaskadaylight.com/north-pole/2026-12/">North Pole 日落表</a></li><li>保存本 HTML 后可离线阅读，Google 地图导航需联网。</li></ul>
     </section>
 
     <footer><span class="offline">单文件 · 无外部依赖 · 可离线阅读</span></footer>
@@ -268,96 +390,39 @@
     const place = (name, query = name) => `<a class="place-link" href="${mapUrl(query)}" target="_blank" rel="noreferrer">${name}</a>`;
 
     const bookings = [
-      { title:'AA1374 · 墨西哥城 → 达拉斯', time:'9月11日 07:00 CST → 11:01 CDT', detail:'MEX T1 → DFW · 美国航空', address:'Mexico City International Airport Terminal 1', phone:'+1 800-433-7300' },
-      { title:'AA399 · 达拉斯 → 安克雷奇', time:'9月11日 15:15 CDT → 19:13 AKDT', detail:'DFW → ANC South Terminal · 美国航空', address:'Ted Stevens Anchorage International Airport', phone:'+1 907-245-0503' },
-      { title:'Great Alaskan Holidays 房车', time:'9月11日夜间入住 · 9月12日 07:15 讲解', detail:'9月18日 11:30前还车 · Winnebago Minnie Winnie 22M', address:'9800 Old Seward Hwy, Anchorage, AK 99515', phone:'+1 907-248-7777' },
-      { title:'Outbound Heli 冰川徒步组合', time:'9月12日 12:00–18:00 AKDT', detail:'2人 · Paddleboarding + Glacier Trekking · 尾款待付', address:'3901 S Lindsey Cir F, Palmer, AK 99645', phone:'+1 907-351-6736' },
-      { title:'Palmer / Anchorage North KOA', time:'9月12日 14:00后入住 · 9月13日 11:00退营', detail:'1晚 · Pull Thru · 30A电源＋供水 · 无营位下水 · 25 ft房车 · 2人', address:'2010 S Church St, Palmer, AK 99645', phone:'+1 907-745-7445' },
-      { title:'Riley Creek Campground', time:'9月13日入住 · 9月15日 11:00退营', detail:'2晚 · 30 ft以下房车营位 · 2人', address:'Riley Creek Campground, Denali National Park, AK', phone:'+1 866-761-6629' },
-      { title:'East Fork Transit', time:'9月14日 10:00–14:45 AKDT', detail:'2人 · 09:40前到 Denali Bus Depot', address:'Denali Bus Depot, Denali National Park, AK', phone:'+1 866-761-6629' },
-      { title:'Fairbanks / Chena River KOA', time:'9月16日入住 · 9月17日退营', detail:'Pull-through · Full hookups · 25 ft房车 · 2人', address:'1368 Old Badger Rd, North Pole, AK 99705', phone:'+1 907-802-2408' },
-      { title:'Ice Art RV Park & Campground', status:'改期待回复', time:'申请9月15日入住 · 9月16日退营', detail:'原订单9月16–17日；尚未收到改期确认 · Small RV Site · 2人', address:'3574 Phillips Field Rd, Fairbanks, AK 99709', phone:'+1 907-451-8250' },
-      { title:'AM3009 / DL925 · 安克雷奇 → 西雅图', time:'9月19日 01:32 AKDT → 06:07 PDT', detail:'墨西哥航空出票 · 达美实际承运', address:'Ted Stevens Anchorage International Airport', phone:'+1 907-249-2455' },
-      { title:'AM495 · 西雅图 → 墨西哥城', time:'9月19日 09:30 PDT → 16:00 CST', detail:'SEA → MEX T2 · 墨西哥航空', address:'Seattle-Tacoma International Airport', phone:'+1 800-237-6639' }
+      {"title":"AA1066","time":"12/24 06:00 CST → 09:10 CST","detail":"墨西哥城 T1 → 达拉斯 D"},
+      {"title":"AA2572","time":"12/24 15:03 CST → 19:07 AKST","detail":"达拉斯 → 安克雷奇"},
+      {"title":"AS057","time":"12/25 09:27 → 10:35 AKST","detail":"安克雷奇 → 费尔班克斯"},
+      {"title":"AS318","time":"12/30 13:33 → 14:44 AKST","detail":"费尔班克斯 → 安克雷奇"},
+      {"title":"AM3081 / DL925","time":"1/1 01:20 AKST → 06:03 PST","detail":"安克雷奇 → 西雅图"},
+      {"title":"AM495","time":"1/1 09:30 PST → 17:00 CST","detail":"西雅图 → 墨西哥城 T2"},
+      {"title":"Puffin Inn of Anchorage","time":"12/24 15:00 → 12/25 11:00 AKST","address":"4400 Spenard Rd, Anchorage, AK 99517","phone":"+1 907-243-4044","detail":"24 小时免费往返 ANC。请致电前台确认接送与上车点。<a href=\"https://www.puffininn.net/\">酒店官网</a>。"},
+      {"title":"Comfort Inn Fairbanks","time":"12/25 15:00 → 12/27 11:00 AKST","address":"1909 Airport Way, Fairbanks, AK 99701","phone":"+1 907-328-0430"},
+      {"title":"Arctic Igloo Resort","time":"12/27 16:00 → 12/28 11:00 AKST","address":"7035 Chena Hot Springs Rd, Fairbanks, AK 99712","phone":"+1 907-987-2431"},
+      {"title":"Aspen Suites Hotel Fairbanks","time":"12/28 16:00 → 12/30 11:00 AKST","address":"4580 Old Airport Rd, Fairbanks, AK 99709","phone":"+1 907-673-4870"},
+      {"title":"Wingate by Wyndham Anchorage Downtown/Ship Creek","time":"12/30 15:00 → 12/31 11:00 AKST","address":"111 W Ship Creek Ave, Anchorage, AK 99501"},
+      {"title":"Alamo · FAI 机场店","time":"12/25 11:00 AKST 取车","detail":"福特 F‑150 或同组车型，自动挡、四驱。还车信息待补充。","address":"Fairbanks International Airport","phone":"+1 833-823-5644"}
     ];
-
     document.getElementById('booking-grid').innerHTML = bookings.map(b => `
       <li class="booking">
-        <div class="booking-top"><h3>${b.title}</h3><span class="status ${b.status?'pending':''}">${b.status || '已确认'}</span></div>
+        <div class="booking-top"><h3>${b.address ? place(b.title,b.address) : b.title}</h3><span class="status">已确认</span></div>
         <div class="booking-time">${b.time}</div>
-        <details><summary>地址、电话与预订详情</summary><p>${b.detail}</p>
-        <p>📍 ${place(b.address)}</p>
-        <p>☎ <a href="tel:${b.phone.replace(/[^+\d]/g,'')}">${b.phone}</a></p>
-        </details>
+        ${b.detail ? '<p>'+b.detail+'</p>' : ''}
+        ${b.address ? '<p>'+b.address+'</p>' : ''}
+        ${b.phone ? '<p><a href="tel:'+b.phone.replace(/[^+\d]/g,'')+'">'+b.phone+'</a></p>' : ''}
       </li>`).join('');
 
     const days = [
-      { date:'9月11日 · 周五', title:'飞抵安克雷奇 · 主采购', sleep:'宿：租车公司场地内房车', color:'#d95e4b', stops:['Mexico City International Airport Terminal 1','Dallas Fort Worth International Airport','Ted Stevens Anchorage International Airport','Walmart Supercenter 8900 Old Seward Hwy Anchorage','Great Alaskan Holidays'], events:[
-        ['07:00','CST · UTC−6','AA1374 起飞','墨西哥城 T1 → 达拉斯；11:01 CDT 抵达。'],
-        ['15:15','CDT · UTC−5','AA399 起飞','达拉斯 → 安克雷奇；19:13 AKDT 抵达。'],
-        ['约20:05–21:05','AKDT · UTC−8',`${place('Walmart 主采购','8900 Old Seward Hwy, Anchorage, AK 99515')}`,'机场打车约14分钟；每天06:00–23:00。先买2–3天饮用水、早餐、路餐和必要用品，行李全程随身。若20:45仍未离开机场，只买必需品。'],
-        ['约21:10','AKDT · UTC−8',`前往 ${place('Great Alaskan Holidays','9800 Old Seward Hwy, Anchorage, AK 99515')}`,'Walmart 到租车公司约0.7英里、驾车约2分钟；找到邮件注明的车辆和钥匙，当晚只住宿，不开车。']
-      ], risk:'必须提前收到夜间进场和钥匙位置邮件；如果出发前仍未收到，立即联系租车公司。若航班延误或两人已经很疲劳，11日晚只买水和早餐，安全优先。'},
-      { date:'9月12日 · 周六', title:'取车 · 亚洲食材补购 · 帕尔默冰川', sleep:'宿：Palmer / Anchorage North KOA（已确认）', color:'#dd5b48', stops:['Great Alaskan Holidays','Oriental Shopping Center 408 E Fireweed Ln Anchorage','Outbound Heli Adventures','Palmer / Anchorage North KOA Journey'], events:[
-        ['07:15','AKDT · UTC−8','房车讲解与取车','讲解约45分钟，完成文件后才能驾驶。'],
-        ['09:00–09:30','AKDT · UTC−8',`${place('东方超市 Oriental Shopping Center','408 E Fireweed Ln, Anchorage, AK 99503')}`,'周六公开营业时间09:00–17:00；以韩式及亚洲食材为主。08:30前完成取车才考虑此站；先确认25 ft房车短停，采购限30分钟。'],
-        ['最晚09:30','AKDT · UTC−8',`离店驶往 ${place('Outbound Heli','3901 S Lindsey Cir F, Palmer, AK 99645')}`,'地图当前约51分钟、44.1英里；房车按90分钟预留，目标11:00抵达、11:30前完成报到。停车不顺利或开门延迟就跳过采购。'],
-        ['12:00','AKDT · UTC−8',`${place('Outbound Heli','3901 S Lindsey Cir F, Palmer, AK 99645')} · 冰川桨板 + Glacier Trekking`,'订单为6小时；闭趾鞋、分层防水衣物。', '需确认/尾款'],
-        ['18:00–19:00','AKDT · UTC−8','返场缓冲并前往营地','19:00不是订单结束时间，而是为天气、直升机调度和换装预留。'],
-        ['约19:15–20:00','AKDT · UTC−8',`${place('Palmer KOA 晚到入住','2010 S Church St, Palmer, AK 99645')}`,'营地已记录预计19:00–21:00抵达；到场查看夜间登记箱。营位有30A电源和水，无下水接口。']
-      ], risk:'东方超市11日周五19:00关门，晚于你们落地前已打烊；安排12日开门后快买。取车超过08:30或停车未落实就取消，已有Walmart基础补给，15日还有MiMi。'},
-      { date:'9月13日 · 周日', title:'Palmer 补给 · Talkeetna · 抵达 Denali', sleep:'宿：Riley Creek Campground', color:'#e6a62d', stops:['Palmer / Anchorage North KOA Journey','Fred Meyer Palmer','Talkeetna Alaska','Riley Creek Mercantile'], events:[
-        ['08:30','AKDT · UTC−8','离开 Palmer KOA','先检查油量和饮水。'],
-        ['约08:40–09:20','AKDT · UTC−8',`${place('Fred Meyer 查漏补缺','535 E Palmer-Wasilla Hwy, Palmer, AK 99645')}`,'中大型综合超市，每天06:00–22:00；适合买生鲜、饮料和遗漏用品。备选 Carrs：664 E Palmer-Wasilla Hwy，每天05:00–24:00。'],
-        ['约11:00','AKDT · UTC−8',`${place('Talkeetna 小镇','Talkeetna, Alaska')}`,'经 Fred Meyer 的总驾驶约1小时47分，比营地直达多约21分钟；午餐、主街散步，不临时加入长时飞行项目。'],
-        ['13:15','AKDT · UTC−8','驶往 Denali','房车预计约3小时，途中安排一次休息。'],
-        ['16:30','AKDT · UTC−8',`${place('Riley Creek 办理入住','Riley Creek Mercantile, Denali National Park')}`,'先到 Mercantile 核验营位，再进入营地。'],
-        ['18:00','AKDT · UTC−8',`${place('Horseshoe Lake 轻松散步','Horseshoe Lake Trailhead, Denali National Park')}`,'按体力选择短线。']
-      ], risk:'13日采购建议40分钟封顶，13:15仍按原计划离开 Talkeetna。营位为先到先选；不要先直接占位，必须先去 Riley Creek Mercantile 办理入住。'},
-      { date:'9月14日 · 周一', title:'East Fork 巴士 · Savage Alpine', sleep:'宿：Riley Creek Campground', color:'#ef8460', stops:['Riley Creek Campground','Denali Bus Depot','East Fork Bridge Denali','Savage River Rest Area Denali','Mountain Vista Denali'], events:[
-        ['09:20','AKDT · UTC−8',`前往 ${place('Denali Bus Depot','Denali Bus Depot, Denali National Park')}`,'预订要求至少提前20分钟到。'],
-        ['10:00–12:30','AKDT · UTC−8','East Fork Transit · 去程','已确认；12:30左右在 East Fork 调头。带足全天食物、水和保暖层。'],
-        ['约14:05','AKDT · UTC−8',`${place('Savage River（Mile 15）','Savage River Rest Area, Denali National Park')} 下车`,'上车时先告诉司机：回程要在 Savage River 步道西端下车；不要误下在 Savage River Campground。'],
-        ['约14:10–17:10','AKDT · UTC−8',`${place('Savage Alpine Trail','Savage Alpine Trail, Denali National Park')}`,'仅在无雨、低风、能见度好且体力充足时，从 Savage River 走到 Mountain Vista。约4英里、3小时、最大坡度约25%。', '天气允许才走'],
-        ['17:40目标','AKDT · UTC−8',`${place('Mountain Vista','Mountain Vista Rest Area, Denali National Park')} 搭免费巴士`,'目标搭17:40班；错过可等18:10、18:40等后续班。官方表中 Mountain Vista 最后一班约19:40。']
-      ], risk:'这不是在 Savage Campground 下车后走回去：正确路线是 Savage River → Mountain Vista。East Fork 巴士到站时间会因动物和路况变化；返程巴士不保证立即有座。若下雨、风大、能见度差或14:15仍未开始，取消徒步，继续坐原车回 Bus Depot；雨天改为9月15日免费观景巴士。'},
-      { date:'9月15日 · 周二', title:'Denali → Fairbanks · MiMi补给', sleep:'宿：Ice Art（改期待回复）', color:'#627acb', stops:['Riley Creek Campground','MiMi Asian Mart 250 3rd St Fairbanks','Ice Art RV Park & Campground'], events:[
-        ['08:20','AKDT · UTC−8','雨天备选：Savage River Shuttle','仅前一天取消徒步时执行；纯乘车往返约2小时，提前收营。'],
-        ['11:00前','AKDT · UTC−8','退营驶往 Fairbanks','房车含途中休息暂按3.5–4小时预留；先到Fairbanks，North Pole安排次日。'],
-        ['约15:00–15:45','AKDT · UTC−8',`${place('MiMi Asian Mart 补给','250 3rd St STE4, Fairbanks, AK 99701')}`,'周二公开营业时间10:00–20:00。补后半程生鲜、面条、调料及亚洲食品；位于Gavora Mall，25 ft停车位置需店方确认。'],
-        ['约16:15','AKDT · UTC−8',`${place('Ice Art RV Park','3574 Phillips Field Rd, Fairbanks, AK 99709')}`,'仅在收到改期成功回复后入住；目前9月15日晚营位未确认。', '改期待回复'],
-        ['22:00后','AKDT · UTC−8','按云量决定是否看极光','只在精神状态良好、道路安全时短距离观测。']
-      ], risk:'KOA已改至16日；Ice Art申请15日尚未获回复，不能把15日晚当成已落实。若MiMi停车不合适，当天改大型超市补基础食材，不在窄场地强行掉头。'},
-      { date:'9月16日 · 周三', title:'North Pole · Chena温泉', sleep:'宿：Fairbanks / Chena River KOA（已改期）', color:'#25a07f', stops:['Ice Art RV Park & Campground','Morris Thompson Cultural and Visitors Center','Santa Claus House North Pole','Chena Hot Springs Resort','Fairbanks Chena River KOA Journey'], events:[
-        ['08:30–09:15','AKDT · UTC−8',`${place('Morris Thompson Center','101 Dunkel St, Fairbanks, AK 99701')}`,'免费，9月每日08:00–17:00；先看展，随后收营退房。'],
-        ['10:00–10:45','AKDT · UTC−8',`${place('Santa Claus House','101 St Nicholas Dr, North Pole, AK 99705')}`,'9月14日起每日10:00–18:00；驯鹿项目9月13日结束。当天驻车后再按现场指示选位。'],
-        ['10:45–11:00','AKDT · UTC−8','带好路餐，出发去Chena','不等待KOA提前入住；去程按最多2小时预留，房车驾驶按道路和天气调整。'],
-        ['约13:00','AKDT · UTC−8',`${place('Chena Hot Springs Resort','17600 Chena Hot Springs Rd, Fairbanks, AK 99712')}`,'到场向工作人员问日间房车停车区，预留停车、午餐和报到时间。'],
-        ['14:00','AKDT · UTC−8',`${place('Aurora Ice Museum','17600 Chena Hot Springs Rd, Fairbanks, AK 99712')}`,'目标场次，尚需预约；提前15分钟集合。', '提前订票'],
-        ['15:00–16:30','AKDT · UTC−8','温泉与换装','留足换衣和休息时间；疲劳就缩短停留。'],
-        ['16:45出发','AKDT · UTC−8',`返回 ${place('Fairbanks / Chena River KOA','1368 Old Badger Rd, North Pole, AK 99705')}`,'返程预留1.5–2小时，目标18:15–18:45到营地；提前问晚到登记方式。']
-      ], risk:'Chena通常可开房车去，具体短停区待度假村确认。9月16日已过官方营地季与供水排污服务截止日9月15日；本日仅日游。往返预留3–4小时驾驶，出发前查看Alaska 511与天气。'}
-,
-      { date:'9月17日 · 周四', title:'Fairbanks → Anchorage', sleep:'宿：Ship Creek（待确认）', color:'#9a66bf', stops:['Fairbanks Chena River KOA Journey','Nenana Alaska','Denali Viewpoint South','Ship Creek RV Park'], events:[
-        ['08:00','AKDT · UTC−8','离开 Fairbanks','这是全程最长驾驶日，尽量不要拖到11:00才出发。'],
-        ['09:15','AKDT · UTC−8',`${place('Nenana 短休息','Nenana, Alaska')}`,'伸展、加油或咖啡。'],
-        ['12:00','AKDT · UTC−8','沿 Parks Highway 午餐','选择方便房车进出的停车点。'],
-        ['14:30','AKDT · UTC−8','观景点短停','只在天气和停车条件合适时停留。'],
-        ['17:00–18:00','AKDT · UTC−8',`抵达 ${place('Ship Creek','150 N Ingra St, Anchorage, AK 99501')}`,'预订尚未确认；收到确认前不能视为已有营位。']
-      ], risk:'纯驾驶通常约6.5小时，房车加休息按8小时安排。若睡眠不足或天气恶化，应删掉观景停靠。'},
-      { date:'9月18日 · 周五', title:'还车 · Anchorage城市与美食', sleep:'夜间前往 ANC 候机', color:'#2f80b5', stops:['Ship Creek RV Park','Great Alaskan Holidays','Ted Stevens Anchorage International Airport','Anchorage Museum','49th State Brewing Anchorage','Ted Stevens Anchorage International Airport'], events:[
-        ['08:00','AKDT · UTC−8','排污、加油、整理房车','确认个人物品、燃油和水箱状态。'],
-        ['10:45','AKDT · UTC−8',`抵达 ${place('Great Alaskan Holidays','9800 Old Seward Hwy, Anchorage, AK 99515')}`,'合同截止11:30，提前到避免迟还费用。'],
-        ['12:15','AKDT · UTC−8',`先去 ${place('ANC','Ted Stevens Anchorage International Airport')} 寄存行李`,'Huntleigh USA 位于行李提取4旁；营业时间必须提前电话确认。', '需确认'],
-        ['13:15','AKDT · UTC−8',`${place('Anchorage Museum','625 C St, Anchorage, AK 99501')}`,'9月每日10:00–18:00；周五开放。可现场购票。'],
-        ['16:15','AKDT · UTC−8','市中心步行','Town Square、4th Ave、Cook Inlet方向，按天气调整。'],
-        ['17:30','AKDT · UTC−8',`${place('49th State Brewing','717 W 3rd Ave, Anchorage, AK 99501')} 晚餐`,'可尝试本地海鲜；一楼和吧台开放座位，热门时段可能排队。'],
-        ['21:30','AKDT · UTC−8','返回 ANC','取行李、办理国际联程手续；凌晨01:32起飞。']
-      ], risk:'还车到凌晨航班相隔约14小时。行李寄存营业时间是关键依赖；若无法寄存，需要租车公司保管或安排日用酒店。'},
-      { date:'9月19日 · 周六', title:'西雅图转机 · 返回墨西哥城', sleep:'旅程结束', color:'#5e8fac', stops:['Ted Stevens Anchorage International Airport','Seattle-Tacoma International Airport','Mexico City International Airport Terminal 2'], events:[
-        ['01:32','AKDT · UTC−8','AM3009 / DL925 起飞','达美实际承运；06:07 PDT 抵达西雅图。'],
-        ['09:30','PDT · UTC−7','AM495 起飞','前往墨西哥城；16:00 CST 抵达 T2。']
-      ], risk:'同一天跨三个时区。页面时间均按出发或到达城市当地时间标注，不要用手机所在地时区自行换算。'}
+      {"date":"12月23日","title":"出发准备","sleep":"墨西哥城","stops":[],"color":"#378bb7","events":[["晚间","证件、行李、现金和闹钟"]]},
+      {"date":"12月24日","title":"墨西哥城 → 达拉斯 → 安克雷奇","sleep":"Puffin Inn of Anchorage","stops":["Mexico City International Airport","Dallas Fort Worth International Airport","Ted Stevens Anchorage International Airport"],"drive":["Ted Stevens Anchorage International Airport","Puffin Inn of Anchorage"],"color":"#247aaa","events":[["06:00","AA1066 起飞","09:10 抵达达拉斯 D 航站楼","CST · UTC−6"],["15:03","AA2572 起飞","19:07 AKST 抵达安克雷奇","CST · UTC−6"],["19:07","抵达 ANC · 联系酒店接机","取完行李后拨 <a href=\"tel:+19072434044\">+1 907-243-4044</a>，确认接车点和等候时间。酒店提供 24 小时免费接驳。"]]},
+      {"date":"12月25日","title":"飞往费尔班克斯 · 取车补给","sleep":"Comfort Inn Fairbanks","stops":["Ted Stevens Anchorage International Airport","Fairbanks International Airport"],"drive":["Fairbanks International Airport","Comfort Inn Fairbanks"],"color":"#198775","events":[["约07:00","Puffin Inn 送机（建议时间）","前一晚入住时请前台确认圣诞节早班安排，或拨 <a href=\"tel:+19072434044\">+1 907-243-4044</a>。09:27 航班起飞。"],["09:27","AS057 起飞","10:35 抵达 FAI"],["11:00","Alamo 机场取车","落地到预约相隔 25 分钟，托运行李或航班延误时留意晚到保留规则。"],["下午","采购补给","圣诞节当天提前确认营业"],["15:00","Comfort Inn 入住"]]},
+      {"date":"12月26日","title":"费尔班克斯 · 访客中心、博物馆与晚餐","sleep":"Comfort Inn Fairbanks","stops":["Comfort Inn Fairbanks","101 Dunkel St, Fairbanks, AK 99701","1962 Yukon Dr, Fairbanks, AK 99775","4630 Old Airport Rd, Fairbanks, AK 99709","796 Chena Pump Rd, Fairbanks, AK 99709","Comfort Inn Fairbanks"],"color":"#379580","events":[["上午","悠闲早餐"],["约10:30","<a href=\"https://www.google.com/maps/dir/?api=1&amp;destination=101%20Dunkel%20St%2C%20Fairbanks%2C%20AK%2099701\">Morris Thompson Cultural & Visitors Center</a>","101 Dunkel St, Fairbanks, AK 99701。市中心免费展览，可拍入口和展陈。<a href=\"https://www.explorefairbanks.com/explore-the-area/fairbanks/mt-cultural-and-visitors-center/\">访客中心信息</a>"],["约13:00","<a href=\"https://www.google.com/maps/dir/?api=1&amp;destination=1962%20Yukon%20Dr%2C%20Fairbanks%2C%20AK%2099775\">Museum of the North</a>","1962 Yukon Dr, Fairbanks, AK 99775。到 UAF 校园拍白色建筑外观，馆内参观按当天开放情况。<a href=\"https://www.uaf.edu/museum/plan-your-visit/hours/index.php\">馆方营业时间</a>，圣诞周出发前复核。"],["下午","<a href=\"https://www.google.com/maps/dir/?api=1&amp;destination=4630%20Old%20Airport%20Rd%2C%20Fairbanks%2C%20AK%2099709\">The Great Alaskan Bowl Company</a>","4630 Old Airport Rd, Fairbanks, AK 99709。<a href=\"https://www.woodbowl.com/pages/our-store\">店铺官网</a>常规周六 10:00–18:00，节日期间出发前复核。"],["晚餐","<a href=\"https://www.google.com/maps/dir/?api=1&amp;destination=796%20Chena%20Pump%20Rd%2C%20Fairbanks%2C%20AK%2099709\">The Pump House Restaurant</a>","796 Chena Pump Rd, Fairbanks, AK 99709。建议先打 <a href=\"tel:+19074798452\">907-479-8452</a> 确认营业和订位。"]],"drive":["Comfort Inn Fairbanks","101 Dunkel St, Fairbanks, AK 99701","1962 Yukon Dr, Fairbanks, AK 99775","4630 Old Airport Rd, Fairbanks, AK 99709","796 Chena Pump Rd, Fairbanks, AK 99709","Comfort Inn Fairbanks"]},
+      {"date":"12月27日","title":"珍娜温泉 · 冰雕博物馆 · 玻璃屋","sleep":"Arctic Igloo Resort","stops":["Comfort Inn Fairbanks","17600 Chena Hot Springs Rd, Fairbanks, AK 99712","Arctic Igloo Resort"],"drive":["Comfort Inn Fairbanks","17600 Chena Hot Springs Rd, Fairbanks, AK 99712","Arctic Igloo Resort"],"color":"#d69537","events":[["11:00","Comfort Inn 退房"],["中午至下午","<a href=\"https://www.google.com/maps/dir/?api=1&amp;destination=17600%20Chena%20Hot%20Springs%20Rd%2C%20Fairbanks%2C%20AK%2099712\">珍娜温泉</a>"],["下午","<a href=\"https://www.google.com/maps/dir/?api=1&amp;destination=17600%20Chena%20Hot%20Springs%20Rd%2C%20Fairbanks%2C%20AK%2099712\">Aurora Ice Museum 冰雕博物馆</a>","17600 Chena Hot Springs Rd, Fairbanks, AK 99712。与温泉同址，在 Activities Center 集合。<a href=\"https://www.chenahotsprings.com/activities-2/\">官网</a>列导览约 45 分钟，场次和余位待确认。"],["16:00起","玻璃屋入住","Premium Glass Igloo 已订。游览结束后从温泉往费尔班克斯方向返回玻璃屋，若预计晚到，先联系度假村。"]]},
+      {"date":"12月28日","title":"North Pole · 圣诞老人和狗拉雪橇","sleep":"Aspen Suites Hotel Fairbanks","stops":["Arctic Igloo Resort","Santa Claus House, North Pole, Alaska","1983 Tunnels Rd, North Pole, AK 99705","Aspen Suites Hotel Fairbanks"],"drive":["Arctic Igloo Resort","Santa Claus House, North Pole, Alaska","1983 Tunnels Rd, North Pole, AK 99705","Aspen Suites Hotel Fairbanks"],"color":"#ac694e","events":[["11:00","玻璃屋退房","带上简餐，直接往 North Pole 方向走。"],["约12:15–13:10","Santa Claus House","12:15 左右到，先逛店；争取约 13:00 见圣诞老人，见面时段待确认。13:10 左右离开，排队太长就缩短停留，优先保住雪橇时间。"],["13:40 目标","抵达 Firewalker Kennel","1983 Tunnels Rd, North Pole, AK 99705。提前签到、换装备和参观犬舍。"],["约14:40–14:50","目标实际开滑（待确认）","当天 North Pole 约 14:47 日落。预约时明确询问真正上雪橇的时间和户外时长。粉红天空取决于云层与能见度。"],["16:00起","Aspen Suites 入住","雪橇结束后回费尔班克斯。珍娜湖冰钓可考虑另一天。"]]},
+      {"date":"12月29日","title":"费尔班克斯自由活动","sleep":"Aspen Suites Hotel Fairbanks","stops":["Aspen Suites Hotel Fairbanks"],"color":"#8164b9","events":[["白天","迪纳利国家公园自驾（备选）","出发前核对公园冬季道路开放范围、Alaska 511 路况和租车合同。遇到冰雪或能见度差，就留在费尔班克斯。北极圈一日游、冰钓、雪地摩托仍可择一。"]]},
+      {"date":"12月30日","title":"费尔班克斯 → 安克雷奇","sleep":"Wingate by Wyndham Anchorage Downtown/Ship Creek","stops":["Fairbanks International Airport","Ted Stevens Anchorage International Airport"],"drive":["Ted Stevens Anchorage International Airport","Wingate by Wyndham Anchorage Downtown/Ship Creek"],"color":"#6774bb","events":[["11:00","Aspen Suites 退房","还车时间与地点待核对，按 13:33 航班倒排。"],["13:33","AS318 起飞","14:44 抵达 ANC"],["15:00起","Wingate 入住"]]},
+      {"date":"12月31日","title":"安克雷奇自由活动 · 晚上去机场","sleep":"当晚不住宿","stops":["Wingate by Wyndham Anchorage Downtown/Ship Creek","Ted Stevens Anchorage International Airport"],"drive":["Wingate by Wyndham Anchorage Downtown/Ship Creek","Ted Stevens Anchorage International Airport"],"color":"#a66ac2","events":[["11:00","Wingate 退房","确认行李寄存和最晚取件时间"],["白天","安克雷奇自由活动"],["晚间","前往 ANC","航班是次日凌晨 01:20"]]},
+      {"date":"1月1日","title":"安克雷奇 → 西雅图 → 墨西哥城","sleep":"旅程结束","stops":["Ted Stevens Anchorage International Airport","Seattle-Tacoma International Airport","Mexico City International Airport Terminal 2"],"color":"#587f9a","events":[["01:20","AM3081 / DL925 起飞","06:03 PST 抵达西雅图，截图有航变提示，出发前复核"],["09:30","AM495 起飞","17:00 CST 抵达墨西哥城 T2","PST · UTC−8"]]}
     ];
 
     const miniMap = (stops, color) => {
@@ -373,32 +438,35 @@
     document.getElementById('day-list').innerHTML = days.map((d,di) => `
       <article class="card day">
         <div class="day-head"><div><div class="date-badge">DAY ${di+1} · ${d.date}</div><h3>${d.title}</h3></div><div class="sleep">${d.sleep}</div></div>
-        <details class="day-route">
+        ${d.stops.length ? `<details class="day-route">
           <summary>展开当日路线地图</summary>
-          <div class="route-panel">${miniMap(d.stops,d.color)}<a class="nav-all" href="${routeUrl(d.stops)}" target="_blank" rel="noreferrer">一键打开全天多点导航 ↗</a></div>
-        </details>
-        <div class="timeline">${d.events.map(e => `<div class="timeline-row"><div class="time">${e[0]}<small>${e[1]}</small></div><div class="event"><h4>${e[2]}${e[4]?`<span class="tag">${e[4]}</span>`:''}</h4><p>${e[3]}</p></div></div>`).join('')}</div>
-        <div class="risk"><strong>注意：</strong>${d.risk}</div>
+          <div class="route-panel">${miniMap(d.stops,d.color)}<p>${d.stops.map(s=>place(s)).join(" → ")}</p>${d.drive ? `<a class="nav-all" href="${routeUrl(d.drive)}" target="_blank" rel="noreferrer">打开当日地面导航 ↗</a>` : ""}</div>
+        </details>` : ""}
+        <div class="timeline">${d.events.map(e => `<div class="timeline-row"><div class="time">${e[0]}<small>${e[3] || (di===0 ? "CST · UTC−6" : "AKST · UTC−9")}</small></div><div class="event"><h4>${e[1]}</h4>${e[2] ? `<p>${e[2]}</p>` : ""}</div></div>`).join('')}</div>
       </article>`).join('');
 
     const schedule = [
-      ['AA1374 从墨西哥城起飞','2026-09-11T07:00:00-06:00','9月11日 07:00 CST（墨西哥城，UTC−6）'],
-      ['AA399 从达拉斯起飞','2026-09-11T15:15:00-05:00','9月11日 15:15 CDT（达拉斯，UTC−5）'],
-      ['抵达安克雷奇','2026-09-11T19:13:00-08:00','9月11日 19:13 AKDT（安克雷奇，UTC−8）'],
-      ['房车取车讲解','2026-09-12T07:15:00-08:00','9月12日 07:15 AKDT（安克雷奇，UTC−8）'],
-      ['冰川徒步活动集合','2026-09-12T12:00:00-08:00','9月12日 12:00 AKDT（Palmer，UTC−8）'],
-      ['East Fork Transit 发车','2026-09-14T10:00:00-08:00','9月14日 10:00 AKDT（Denali，UTC−8）'],
-      ['房车还车截止','2026-09-18T11:30:00-08:00','9月18日 11:30 AKDT（安克雷奇，UTC−8）'],
-      ['AM3009 / DL925 起飞','2026-09-19T01:32:00-08:00','9月19日 01:32 AKDT（安克雷奇，UTC−8）'],
-      ['AM495 从西雅图起飞','2026-09-19T09:30:00-07:00','9月19日 09:30 PDT（西雅图，UTC−7）']
-    ].map(x => ({title:x[0], at:new Date(x[1]), label:x[2]}));
+      ["AA1066 起飞","2026-12-24T06:00:00-06:00","12-24 06:00 CST（UTC−6）"],
+      ["AA2572 起飞","2026-12-24T15:03:00-06:00","12-24 15:03 CST（UTC−6）"],
+      ["AS057 起飞","2026-12-25T09:27:00-09:00","12-25 09:27 AKST（UTC−9）"],
+      ["Alamo 取车","2026-12-25T11:00:00-09:00","12-25 11:00 AKST（UTC−9）"],
+      ["Comfort Inn 入住","2026-12-25T15:00:00-09:00","12-25 15:00 AKST（UTC−9）"],
+      ["玻璃屋入住","2026-12-27T16:00:00-09:00","12-27 16:00 AKST（UTC−9）"],
+      ["玻璃屋退房","2026-12-28T11:00:00-09:00","12-28 11:00 AKST（UTC−9）"],
+      ["Aspen Suites 入住","2026-12-28T16:00:00-09:00","12-28 16:00 AKST（UTC−9）"],
+      ["AS318 起飞","2026-12-30T13:33:00-09:00","12-30 13:33 AKST（UTC−9）"],
+      ["Wingate 退房","2026-12-31T11:00:00-09:00","12-31 11:00 AKST（UTC−9）"],
+      ["AM3081 / DL925 起飞","2027-01-01T01:20:00-09:00","01-01 01:20 AKST（UTC−9）"],
+      ["AM495 起飞","2027-01-01T09:30:00-08:00","01-01 09:30 PST（UTC−8）"],
+      ["抵达墨西哥城","2027-01-01T17:00:00-06:00","01-01 17:00 CST（UTC−6）"]
+    ].map(([title, date, label]) => ({title, at:new Date(date), label}));
 
     function updateCountdown(){
       const now = new Date();
       const next = schedule.find(e => e.at > now);
       if(!next){
         document.getElementById('next-title').textContent = '阿拉斯加旅程已完成';
-        document.getElementById('next-time').textContent = '愿这段公路、冰川和极光留在你们的记忆里。';
+        document.getElementById('next-time').textContent = '已抵达墨西哥城。';
         ['day','hour','minute','second'].forEach(id => document.getElementById('cd-'+id).textContent = '00');
         return;
       }
